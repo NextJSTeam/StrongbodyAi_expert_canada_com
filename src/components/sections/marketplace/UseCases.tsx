@@ -74,7 +74,7 @@ const UseCases = () => {
                                     <useCase.icon size={28} />
                                 </div>
 
-                                <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-[#1c906c] transition-colors tracking-tight italic uppercase">{useCase.title}</h3>
+                                <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-[#1c906c] transition-colors tracking-tight uppercase">{useCase.title}</h3>
                                 <p className="text-[#1c906c] font-medium leading-relaxed mb-8 flex-grow">
                                     {useCase.desc}
                                 </p>
@@ -92,3 +92,4 @@ const UseCases = () => {
 };
 
 export default UseCases;
+

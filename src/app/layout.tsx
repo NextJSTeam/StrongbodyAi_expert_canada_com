@@ -8,7 +8,7 @@ import Footer from "@/components/layout/Footer";
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-jakarta",
 });
 
 
@@ -50,7 +50,7 @@ export default function RootLayout({
         />
 
       </head>
-      <body className={`${jakarta.variable} font-sans antialiased text-slate-900 bg-white`}>
+      <body className={`${jakarta.variable} font-sans antialiased text-base text-slate-900 bg-white`}>
         <Navbar />
         {children}
         <Footer />

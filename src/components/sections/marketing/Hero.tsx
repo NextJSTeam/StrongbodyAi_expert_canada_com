@@ -54,7 +54,7 @@ const Hero = () => {
 
                     <Reveal>
                         <h1 className="text-6xl lg:text-8xl font-black !text-white tracking-tighter leading-[0.95] mb-8 text-balance uppercase">
-                            StrongBody <span className="text-primary italic">AI</span>
+                            StrongBody <span className="text-primary">AI</span>
                         </h1>
                     </Reveal>
 
@@ -114,3 +114,4 @@ const Hero = () => {
 
 
 export default Hero;
+

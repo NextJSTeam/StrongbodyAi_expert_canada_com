@@ -41,7 +41,7 @@ const Testimonials = () => {
                             <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow relative h-full">
                                 <Quote className="text-primary-text/20 absolute top-4 right-4 w-12 h-12 -z-0" />
                                 <div className="relative z-10 flex flex-col h-full">
-                                    <p className="text-slate-600 italic mb-6 leading-relaxed flex-1">"{t.quote}"</p>
+                                    <p className="text-slate-600 mb-6 leading-relaxed flex-1">"{t.quote}"</p>
                                     <div>
                                         <h4 className="font-bold text-slate-900">{t.author}</h4>
                                         <p className="text-sm text-slate-500">{t.role}</p>
@@ -57,3 +57,4 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
+

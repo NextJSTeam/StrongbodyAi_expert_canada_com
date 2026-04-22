@@ -20,7 +20,7 @@ const Ecosystem = () => {
                             Global Infrastructure
                         </span>
                         <h2 className="text-4xl md:text-7xl font-black text-white mb-10 leading-[0.9] tracking-tight">
-                            The Connected <span className="text-white italic">Ecosystem.</span>
+                            The Connected <span className="text-white">Ecosystem.</span>
                         </h2>
                         <p className="text-xl text-white font-medium leading-relaxed mb-12 max-w-xl">
                             Our architecture enables organizations to function as verified nodes within a global medical network, sharing knowledge securely and instantly.
@@ -71,3 +71,4 @@ const Ecosystem = () => {
 };
 
 export default Ecosystem;
+
