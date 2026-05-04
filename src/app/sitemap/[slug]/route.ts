@@ -1,5 +1,23 @@
 import { fetchAllBlogPosts } from "@/app/api";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+
+// XML escaping helper to prevent broken sitemaps
+function escapeXml(unsafe: string) {
+    if (!unsafe) return "";
+    return unsafe.replace(/[<>&'"]/g, (c) => {
+        switch (c) {
+            case '<': return '&lt;';
+            case '>': return '&gt;';
+            case '&': return '&amp;';
+            case '\'': return '&apos;';
+            case '"': return '&quot;';
+            default: return c;
+        }
+    });
+}
 
 export async function GET(
     request: Request,
@@ -15,7 +33,7 @@ export async function GET(
 
     if (slug === "page-sitemap.xml") {
         routes = [
-            "//",
+            "/",
             "/about/",
             "/how-it-works/",
             "/for-clients/",
@@ -38,16 +56,20 @@ export async function GET(
         const postsPerBatch = 100;
 
         try {
-            // First, get the actual total for this site to avoid redundant calls
+            // Get total posts using the same robust logic as the index
             const { meta } = await fetchAllBlogPosts(1, 1);
-            const totalPosts = meta?.total || 0;
+            const totalPosts = meta?.total || meta?.total_entries || (meta?.total_pages ? meta.total_pages * 1 : 0) || 0;
             
             // Calculate how many API pages we actually need to fetch for this sitemap file
             const startPost = (index - 1) * postsPerSitemapFile;
             const endPost = Math.min(startPost + postsPerSitemapFile, totalPosts);
             
-            if (endPost > startPost) {
-                const totalToFetch = endPost - startPost;
+            // If totalPosts is 0 but we are at the first sitemap, 
+            // we should still try to fetch once just in case the meta was wrong
+            const effectiveEndPost = (totalPosts === 0 && index === 1) ? postsPerBatch : endPost;
+
+            if (effectiveEndPost > startPost) {
+                const totalToFetch = effectiveEndPost - startPost;
                 const batchesNeeded = Math.ceil(totalToFetch / postsPerBatch);
                 const startPage = Math.floor(startPost / postsPerBatch) + 1;
 
@@ -76,7 +98,6 @@ export async function GET(
             console.error("Error fetching batched posts for canada sitemap chunk:", e);
         }
     } else {
-        // Default empty for other placeholders (author, tag, portfolio, news, manual, usecase)
         routes = [];
     }
 
@@ -87,10 +108,10 @@ export async function GET(
             .map(
                 (route) => `
   <url>
-    <loc>${route.url}</loc>
+    <loc>${escapeXml(route.url)}</loc>
     <lastmod>${route.lastModified}</lastmod>${route.image ? `
     <image:image>
-      <image:loc>${route.image}</image:loc>
+      <image:loc>${escapeXml(route.image)}</image:loc>
     </image:image>` : ""}
   </url>`
             )
@@ -100,7 +121,8 @@ export async function GET(
     return new Response(xml, {
         headers: {
             "Content-Type": "application/xml",
-            "Cache-Control": "public, s-maxage=86400, stale-while-revalidate",
+            "Cache-Control": "public, s-maxage=60, stale-while-revalidate",
         },
     });
 }
+

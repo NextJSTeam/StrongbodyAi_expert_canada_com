@@ -1,29 +1,18 @@
 import { fetchAllBlogPosts } from "@/app/api";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET(request: Request) {
     const host = request.headers.get("host");
     const protocol = host?.includes("localhost") ? "http" : "https";
     const baseUrl = `${protocol}://${host}`;
     const lastMod = new Date().toISOString();
 
-    // The external API likely limits requests to 100 items. 
-    // To get the true total without missing items, we fetch page by page until empty.
-    const postsPerSitemap = 100; 
-    let totalPosts = 0;
-    let currentPage = 1;
-    
-    while (true) {
-        try {
-            const { posts: pagePosts } = await fetchAllBlogPosts(currentPage, postsPerSitemap);
-            if (!pagePosts || pagePosts.length === 0) break;
-            totalPosts += pagePosts.length;
-            if (pagePosts.length < postsPerSitemap) break;
-            currentPage++;
-        } catch (e) {
-            console.error(`Sitemap generation error at page ${currentPage}:`, e);
-            break;
-        }
-    }
+    // Use efficient meta-only fetch
+    const { meta } = await fetchAllBlogPosts(1, 1);
+    const totalPosts = meta?.total || meta?.total_entries || (meta?.total_pages ? meta.total_pages * 1 : 0) || 0;
+    const postsPerSitemap = 10000;
 
     const postSitemapCount = Math.max(1, Math.ceil(totalPosts / postsPerSitemap));
 
@@ -57,7 +46,7 @@ export async function GET(request: Request) {
     return new Response(xml, {
         headers: {
             "Content-Type": "application/xml",
-            "Cache-Control": "public, s-maxage=86400, stale-while-revalidate",
+            "Cache-Control": "public, s-maxage=60, stale-while-revalidate",
         },
     });
 }
