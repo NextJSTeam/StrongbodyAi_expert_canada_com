@@ -23,7 +23,7 @@ export async function fetchPostDetail(slug: string, language: string = DEFAULT_L
     return res?.data || res;
 }
 
-export async function fetchPostsByCategory(category?: string, page?: number, limit?: number, language: string = DEFAULT_LANG) {
+export async function fetchPostsByCategory(category?: string, page?: number, limit?: number, language?: string, options: any = {}) {
     const params = new URLSearchParams();
     if (language) params.append("language", language);
     if (category) params.append("category", category);
@@ -32,5 +32,5 @@ export async function fetchPostsByCategory(category?: string, page?: number, lim
     
     const queryString = params.toString();
     const url = `/posts${queryString ? `?${queryString}` : ""}`;
-    return apiFetch(url);
+    return apiFetch(url, options);
 }

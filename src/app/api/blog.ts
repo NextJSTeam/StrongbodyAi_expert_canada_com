@@ -51,9 +51,10 @@ export async function fetchBlogPostsByWidget(code: string) {
     }
 }
 
-export async function fetchBlogsByCategory(category?: string, page: number = 1, limit: number = 6) {
+export async function fetchBlogsByCategory(category?: string, page: number = 1, limit: number = 6, language?: string) {
     try {
-        const res = await fetchPostsByCategory(category, page, limit);
+        const options = language !== undefined ? { headers: { language } } : {};
+        const res = await fetchPostsByCategory(category, page, limit, language, options);
 
         // Handle both flattened and nested data (res.data || res)
         const postsArray = res?.data || (Array.isArray(res) ? res : []);
@@ -89,6 +90,6 @@ export async function fetchBlogsByCategory(category?: string, page: number = 1, 
     }
 }
 
-export async function fetchAllBlogPosts(page: number = 1, limit: number = 6) {
-    return fetchBlogsByCategory(undefined, page, limit);
+export async function fetchAllBlogPosts(page: number = 1, limit: number = 6, language?: string) {
+    return fetchBlogsByCategory(undefined, page, limit, language);
 }
