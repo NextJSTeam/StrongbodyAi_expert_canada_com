@@ -7,8 +7,8 @@ import { API_CONFIG } from '@/config/api';
 
 export async function generateMetadata(): Promise<Metadata> {
     return generateUnifiedMetadata('recruitment', {
-        title: 'Werving & Vacatures - Word Lid Van Ons Team',
-        description: 'Ontdek carrièremogelijkheden bij StrongBody AI. We zijn op zoek naar getalenteerde professionals om ons team in gezondheidstechnologie te versterken.',
+        title: 'Recruiting & Careers - Join Our Team',
+        description: 'Explore career opportunities at StrongBody AI. We are looking for talented professionals to grow our global health tech team.',
     });
 }
 
@@ -37,26 +37,26 @@ export default async function RecruitmentPage() {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                             </span>
-                            We werven aan
+                            We are hiring
                         </div>                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
-                            Bouw mee aan <br />
-                            <span className="brand-text text-primary">de toekomst van gezondheidszorg</span>
+                            Build the future <br />
+                            <span className="brand-text text-primary">of healthcare</span>
                         </h1>
                         <p className="text-lg md:text-xl text-white/70 mb-10 leading-relaxed">
-                            Sluit je aan bij StrongBody en maak deel uit van een wereldwijd team dat zich toewijdt aan het verbinden van de beste experts met premium cliënten via ons geavanceerde gezondheidsecosysteem.
+                            Join StrongBody and become part of a global team connecting top experts with premium clients through our advanced health ecosystem.
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <a
                                 href="#positions"
                                 className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-bold text-white bg-primary hover:bg-primary-hover transition-all shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
                             >
-                                Bekijk Vacatures
+                                View Open Roles
                             </a>
                             <Link
                                 href="/about"
                                 className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-bold text-white border border-white/20 hover:bg-white/10 transition-all backdrop-blur-sm hover:-translate-y-0.5"
                             >
-                                Over ons
+                                About Us
                             </Link>
                         </div>
                     </div>
@@ -67,17 +67,17 @@ export default async function RecruitmentPage() {
             <section className="py-24 bg-grey-50">
                 <div className="container mx-auto px-4 max-w-6xl">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-4">Waarom StrongBody?</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-4">Why StrongBody?</h2>
                         <p className="text-text-s max-w-2xl mx-auto text-base">
-                            Wij bieden een stimulerende werkomgeving waar innovatie en impact samenkomen. Groei in je carrière terwijl je mensen wereldwijd helpt hun gezondheid te verbeteren.
+                            We offer an inspiring workplace where innovation and impact come together. Grow your career while helping people worldwide improve their health.
                         </p>
                     </div>
  
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
                             {
-                                title: 'Wereldwijde Impact',
-                                text: 'Werk aan ons mondiaal digitaal ecosysteem dat experts en cliënten in meer dan 190 landen naadloos met elkaar verbindt.',
+                                title: 'Global impact',
+                                text: 'Work on our global digital ecosystem that connects experts and clients in over 190 countries.',
                                 icon: (
                                     <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9h18" />
@@ -85,8 +85,8 @@ export default async function RecruitmentPage() {
                                 )
                             },
                             {
-                                title: 'Innovatie Voorop',
-                                text: 'Pionier mee met onze native AI-spraakvertaling en realtime communicatie, die taalbarrières in de zorg volledig wegnemen.',
+                                title: 'Innovation first',
+                                text: 'Help remove language barriers in healthcare with native AI voice translation and real-time communication.',
                                 icon: (
                                     <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -94,8 +94,8 @@ export default async function RecruitmentPage() {
                                 )
                             },
                             {
-                                title: 'Professionele Groei',
-                                text: 'Groei mee in een snel veranderende, dynamische omgeving waar we bouwen aan de commerciële en fysiologische infrastructuur van de toekomst.',
+                                title: 'Professional growth',
+                                text: 'Advance in a fast-changing environment building the healthcare infrastructure of tomorrow.',
                                 icon: (
                                     <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -120,11 +120,11 @@ export default async function RecruitmentPage() {
                 <div className="container mx-auto px-4 max-w-6xl">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                         <div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-2">Openstaande vacatures</h2>
-                            <p className="text-text-s text-base">Vind de functie die aansluit bij jouw passie en vaardigheden.</p>
+                            <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-2">Open positions</h2>
+                            <p className="text-text-s text-base">Find the role that matches your passion and skills.</p>
                         </div>
                         <div className="inline-flex rounded-xl border border-grey-200 p-1 bg-grey-50">
-                            <button className="px-4 py-2 rounded-lg bg-white shadow-sm text-sm font-bold text-primary">Alle Afdelingen</button>
+                            <button className="px-4 py-2 rounded-lg bg-white shadow-sm text-sm font-bold text-primary">All departments</button>
                         </div>
                     </div>
 
@@ -135,9 +135,9 @@ export default async function RecruitmentPage() {
                             <svg className="w-12 h-12 text-grey-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            <h3 className="text-lg font-bold text-text-p mb-2">Momenteel geen open vacatures</h3>
+                            <h3 className="text-lg font-bold text-text-p mb-2">No open positions at the moment</h3>
                             <p className="text-text-s text-sm max-w-md mx-auto">
-                                We hebben momenteel geen actieve vacatures. Stuur ons gerust een open sollicitatie via de onderstaande knop.
+                                We currently have no open positions. Please send an open application anyway.
                             </p>
                         </div>
                     )}
@@ -149,18 +149,18 @@ export default async function RecruitmentPage() {
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,_rgba(218,31,39,0.15),transparent_50%)]"></div>
                 <div className="container mx-auto px-4 max-w-6xl relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Ons wervingsproces</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Our recruitment process</h2>
                         <p className="text-white/60 max-w-2xl mx-auto text-base">
-                            Transparant, efficiënt en menselijk. We respecteren je tijd en maken elke stap helder.
+                            Transparent, efficient, and human. We respect your time and make every step clear.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                         {[
-                            { step: '01', title: 'Sollicitatie', text: 'Dien je cv en motivatie in via ons contactportaal.' },
-                            { step: '02', title: 'Screening', text: 'Eerste kennismakingsgesprek met ons HR-team om je achtergrond te bespreken.' },
-                            { step: '03', title: 'Interview', text: 'Technische en culturele evaluatie met de verantwoordelijke manager.' },
-                            { step: '04', title: 'Aanbod', text: 'Eindgesprek over arbeidsvoorwaarden en welkom bij het team!' }
+                            { step: '01', title: 'Application', text: 'Submit your resume and motivation through our portal.' },
+                            { step: '02', title: 'Screening', text: 'Initial meeting with our HR team to discuss your background.' },
+                            { step: '03', title: 'Interview', text: 'Technical and cultural evaluation with the hiring manager.' },
+                            { step: '04', title: 'Offer', text: 'Final conversation about terms and welcome to the team!' }
                         ].map((item, idx) => (
                             <div key={idx} className="relative group">
                                 <div className="text-7xl font-bold text-primary/30 mb-4 group-hover:text-primary transition-colors duration-500">{item.step}</div>
@@ -183,15 +183,15 @@ export default async function RecruitmentPage() {
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full translate-y-32 -translate-x-32 blur-3xl"></div>
 
                         <div className="relative z-10">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Geen geschikte functie gevonden?</h2>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Didn't find the right role?</h2>
                             <p className="text-lg text-white/70 max-w-2xl mx-auto mb-10">
-                                Stuur ons toch je cv! We zijn altijd op zoek naar getalenteerde professionals voor onze talentenpool.
+                                Send your resume anyway! We are always looking for talented professionals for our talent pool.
                             </p>
                             <Link
-                                href="/contact?subject=Open Sollicitatie"
+                                href="/contact?subject=Open application"
                                 className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-bold text-[#0A0F1C] bg-white hover:bg-grey-100 transition-all shadow-xl"
                             >
-                                Open sollicitatie insturen
+                                Submit an open application
                             </Link>
                         </div>
                     </div>
