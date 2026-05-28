@@ -15,6 +15,28 @@ export interface JobDetail extends JobItem {
     benefits: string[];
     content: string;
 }
+export function isRecruitmentPost(post: any): boolean {
+    if (!post) return false;
+
+    const categorySlug =
+        post?.category?.slug ||
+        post?.category_slug ||
+        post?.category?.code ||
+        "";
+
+    if (categorySlug === "partner-recruitment") return true;
+
+    const categories = post?.categories;
+    if (Array.isArray(categories)) {
+        return categories.some((cat: any) => {
+            const slug = cat?.slug || cat?.code || "";
+            return slug === "partner-recruitment";
+        });
+    }
+
+    return false;
+}
+
 
 // Helpers for dynamic recruitment job parsing
 function stripHtml(html: string): string {

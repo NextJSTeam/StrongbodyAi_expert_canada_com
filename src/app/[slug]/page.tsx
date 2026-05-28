@@ -7,6 +7,10 @@ import { Metadata } from "next";
 import { fetchPostDetail, fetchAllBlogPosts } from "@/app/api";
 
 import ShareButtons from "@/components/blog/ShareButtons";
+import RecruitmentJobDetailView from "@/components/recruitment/RecruitmentJobDetailView";
+import { getJobDetail, isRecruitmentPost } from "@/utils/recruitment-loader";
+import { API_CONFIG } from "@/config/api";
+
 import { generateUnifiedMetadata } from "@/utils/seo";
 
 interface BlogPostPageProps {
@@ -46,6 +50,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     if (!post) {
         notFound();
     }
+    if (isRecruitmentPost(post)) {
+        const locale = (API_CONFIG.HEADERS.language as string) || "en";
+        const job = await getJobDetail(resolvedParams.slug, locale);
+        if (!job) {
+            notFound();
+        }
+        return <RecruitmentJobDetailView job={job} />;
+    }
+
 
     const title = post.title;
     const content = post.content || post.details?.content || "<p>No content available.</p>";

@@ -54,7 +54,7 @@ export default function JobBoard({ jobs }: JobBoardProps) {
                         </div>
                         <div className="flex items-center gap-4">
                             <Link
-                                href={`/recruitment/${job.id}`}
+                                href={`/${job.id}`}
                                 className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-bold text-primary border border-primary/20 hover:bg-primary/5 transition-all text-sm"
                             >
                                 Details
