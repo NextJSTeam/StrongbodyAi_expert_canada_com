@@ -1,4 +1,4 @@
-import { fetchAllBlogPosts } from "@/app/api";
+import { fetchAllBlogPosts, cmsApi } from "@/app/api";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -19,6 +19,59 @@ function escapeXml(unsafe: string) {
     });
 }
 
+// Normalize a menu URL into a clean sitemap-friendly path with trailing slash.
+function normalizeMenuPath(raw: string | undefined | null): string | null {
+    if (!raw) return null;
+    let path = String(raw).trim();
+    if (!path || path === "#") return null;
+    if (/^https?:\/\//i.test(path)) return null;
+    if (path.startsWith("#")) return null;
+    path = path.split("#")[0].split("?")[0];
+    if (!path.startsWith("/")) path = "/" + path;
+    if (path === "/") return "/";
+    if (!path.endsWith("/")) path = path + "/";
+    return path;
+}
+
+function collectMenuPaths(items: any[], acc: Set<string>) {
+    for (const item of items || []) {
+        const norm = normalizeMenuPath(item?.url);
+        if (norm) acc.add(norm);
+        if (Array.isArray(item?.children) && item.children.length) {
+            collectMenuPaths(item.children, acc);
+        }
+    }
+}
+
+async function getDynamicPagePaths(): Promise<string[]> {
+    try {
+        const [headerRes, sitemapRes] = await Promise.allSettled([
+            cmsApi.getMenu("header-menu"),
+            cmsApi.getMenu("sitemap-menu"),
+        ]);
+        const set = new Set<string>();
+
+        if (headerRes.status === "fulfilled") {
+            const headerItems = headerRes.value?.data?.items || headerRes.value?.items || [];
+            if (Array.isArray(headerItems) && headerItems.length > 0) {
+                collectMenuPaths(headerItems, set);
+            }
+        }
+
+        if (sitemapRes.status === "fulfilled") {
+            const sitemapItems = sitemapRes.value?.data?.items || sitemapRes.value?.items || [];
+            if (Array.isArray(sitemapItems) && sitemapItems.length > 0) {
+                collectMenuPaths(sitemapItems, set);
+            }
+        }
+
+        return Array.from(set);
+    } catch (err) {
+        console.error("[Sitemap] Failed to load CMS menus:", err);
+    }
+    return [];
+}
+
 export async function GET(
     request: Request,
     { params }: { params: Promise<{ slug: string }> }
@@ -32,19 +85,9 @@ export async function GET(
     const lastMod = new Date().toISOString();
 
     if (slug === "page-sitemap.xml") {
-        routes = [
-            "/",
-            "/about/",
-            "/how-it-works/",
-            "/for-clients/",
-            "/for-partners/",
-            "/faq/",
-            "/contact/",
-            "/blog/",
-            "/legal/",
-            "/multime/"
-        ].map((route) => ({
-            url: route === "/" ? `${baseUrl}/` : `${baseUrl}${route}`,
+        const paths = await getDynamicPagePaths();
+        routes = paths.map((path) => ({
+            url: `${baseUrl}${path}`,
             lastModified: lastMod,
         }));
     } else if (slug.startsWith("post-sitemap")) {
