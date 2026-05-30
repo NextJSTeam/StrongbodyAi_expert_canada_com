@@ -19,7 +19,7 @@ export default async function RecruitmentPage() {
     return (
         <main className="min-h-screen bg-white font-sans">
             {/* Hero Section */}
-            <section className="relative py-24 md:py-32 overflow-hidden bg-[#0A0F1C]">
+            <section className="relative py-16 md:py-24 overflow-hidden bg-[#0A0F1C]">
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
                     <img
@@ -38,7 +38,8 @@ export default async function RecruitmentPage() {
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                             </span>
                             We are hiring
-                        </div>                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                        </div>
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
                             Build the future <br />
                             <span className="brand-text text-primary">of healthcare</span>
                         </h1>
@@ -64,9 +65,9 @@ export default async function RecruitmentPage() {
             </section>
  
             {/* Why Join Us */}
-            <section className="py-24 bg-grey-50">
+            <section className="py-14 md:py-20 bg-grey-50 border-b border-grey-200">
                 <div className="container mx-auto px-4 max-w-6xl">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-10">
                         <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-4">Why StrongBody?</h2>
                         <p className="text-text-s max-w-2xl mx-auto text-base">
                             We offer an inspiring workplace where innovation and impact come together. Grow your career while helping people worldwide improve their health.
@@ -115,10 +116,10 @@ export default async function RecruitmentPage() {
                 </div>
             </section>
 
-            {/* Open Positions */}
-            <section id="positions" className="py-24">
+            {/* Open Positions + CTA */}
+            <section id="positions" className="py-14 md:py-20 bg-white">
                 <div className="container mx-auto px-4 max-w-6xl">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
                         <div>
                             <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-2">Open positions</h2>
                             <p className="text-text-s text-base">Find the role that matches your passion and skills.</p>
@@ -141,55 +142,17 @@ export default async function RecruitmentPage() {
                             </p>
                         </div>
                     )}
-                </div>
-            </section>
 
-            {/* Application Process */}
-            <section className="py-24 bg-gradient-to-br from-[#160E2E] via-[#0A0F1C] to-[#0A0F1C] text-white relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,_rgba(218,31,39,0.15),transparent_50%)]"></div>
-                <div className="container mx-auto px-4 max-w-6xl relative z-10">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Our recruitment process</h2>
-                        <p className="text-white/60 max-w-2xl mx-auto text-base">
-                            Transparent, efficient, and human. We respect your time and make every step clear.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-                        {[
-                            { step: '01', title: 'Application', text: 'Submit your resume and motivation through our portal.' },
-                            { step: '02', title: 'Screening', text: 'Initial meeting with our HR team to discuss your background.' },
-                            { step: '03', title: 'Interview', text: 'Technical and cultural evaluation with the hiring manager.' },
-                            { step: '04', title: 'Offer', text: 'Final conversation about terms and welcome to the team!' }
-                        ].map((item, idx) => (
-                            <div key={idx} className="relative group">
-                                <div className="text-7xl font-bold text-primary/30 mb-4 group-hover:text-primary transition-colors duration-500">{item.step}</div>
-                                <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
-                                <p className="text-white/60 leading-relaxed text-sm">{item.text}</p>
-                                {idx < 3 && (
-                                    <div className="hidden md:block absolute top-10 -right-6 w-12 h-[1px] bg-white/10"></div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA */}
-            <section className="py-24">
-                <div className="container mx-auto px-4 max-w-6xl">
-                    <div className="bg-gradient-to-br from-secondary via-[#160E2E] to-[#0A0F1C] rounded-[32px] p-8 md:p-16 text-center text-white shadow-2xl relative overflow-hidden border border-white/5">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -translate-y-32 translate-x-32 blur-3xl"></div>
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full translate-y-32 -translate-x-32 blur-3xl"></div>
-
+                    <div className="mt-12 md:mt-16 bg-gradient-to-br from-secondary via-[#160E2E] to-[#0A0F1C] rounded-3xl p-8 md:p-12 text-center text-white shadow-xl relative overflow-hidden border border-white/5">
+                        <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full -translate-y-24 translate-x-24 blur-3xl" aria-hidden />
                         <div className="relative z-10">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Didn't find the right role?</h2>
-                            <p className="text-lg text-white/70 max-w-2xl mx-auto mb-10">
+                            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Didn't find the right role?</h2>
+                            <p className="text-base text-white/70 max-w-xl mx-auto mb-6">
                                 Send your resume anyway! We are always looking for talented professionals for our talent pool.
                             </p>
                             <Link
                                 href="/contact?subject=Open application"
-                                className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-bold text-[#0A0F1C] bg-white hover:bg-grey-100 transition-all shadow-xl"
+                                className="inline-flex items-center justify-center rounded-xl px-8 py-3.5 text-sm font-bold text-[#0A0F1C] bg-white hover:bg-grey-100 transition-all shadow-lg"
                             >
                                 Submit an open application
                             </Link>
