@@ -14,7 +14,7 @@ const ContactContent = () => {
                         <Reveal>
                             <span className="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Get in Touch</span>
                             <h1 className="text-4xl md:text-5xl font-bold text-text-p mb-6 leading-tight">
-                                Contact <span className="text-primary">StrongBody AI</span>
+                                Contact <span className="notranslate text-primary" translate="no">StrongBody AI</span>
                             </h1>
                             <p className="text-lg text-text-m font-medium leading-relaxed mb-10">
                                 Whether you're a client exploring services or a professional interested in partnership — we'd love to hear from you.

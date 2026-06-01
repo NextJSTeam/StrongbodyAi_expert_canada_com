@@ -17,17 +17,26 @@ export const MAIL_CONFIG = {
 };
 
 
-export async function apiFetch(endpoint: string, options: RequestInit = {}) {
+export type ApiFetchOptions = RequestInit & { omitLanguage?: boolean };
+
+export async function apiFetch(endpoint: string, options: ApiFetchOptions = {}) {
+    const { omitLanguage, ...fetchOptions } = options;
     const url = endpoint.startsWith("http") ? endpoint : `${API_BASE_URL}${endpoint}`;
+    const headers: Record<string, string | undefined> = {
+        ...(API_CONFIG.HEADERS as Record<string, string | undefined>),
+    };
+    if (omitLanguage) {
+        delete headers.language;
+    }
 
     try {
         const response = await fetch(url, {
-            ...options,
+            ...fetchOptions,
             headers: {
-                ...API_CONFIG.HEADERS,
-                ...options.headers,
+                ...headers,
+                ...fetchOptions.headers,
             },
-            next: { revalidate: 60, ...options?.next }
+            next: { revalidate: 60, ...fetchOptions?.next }
         } as any);
 
         if (!response.ok) {
@@ -42,8 +51,14 @@ export async function apiFetch(endpoint: string, options: RequestInit = {}) {
     }
 }
 
+const MENU_LANG = (process.env.API_LANGUAGE || "en");
+
+function menuEndpoint(menuCode: string, language = MENU_LANG) {
+    return `/menus/${menuCode}?language=${encodeURIComponent(language)}`;
+}
+
 export const cmsApi = {
-    getMenu: (menuCode: string, language: string = (API_CONFIG.HEADERS.language as string || "en")) => {
-        return apiFetch(`/menus/${menuCode}?language=${language}`);
-    },
+    getMenu: (menuCode: string, language: string = MENU_LANG) =>
+        apiFetch(menuEndpoint(menuCode, language), { omitLanguage: true }),
+    getFooterMenu: () => apiFetch(menuEndpoint("footer-menu"), { omitLanguage: true }),
 };

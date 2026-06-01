@@ -18,10 +18,10 @@ const eligibleProfessions = [
 const partnerBenefits = [
     "Access to tens of millions of premium clients from US, UK, EU, Canada, Australia…",
     "Create professional Offers directly in MultiMe AI Chat (voice + text)",
-    "Secure Escrow payments – withdraw in 30 minutes",
+    "Secure platform payments – fast withdrawal options",
     "AI Voice Translate – international clients understand you instantly",
     "Build personal brand via Voice Hub & blog",
-    "Keep 80% of revenue (only 20% platform fee)",
+    "Keep 100% of your revenue (you don't pay platform fees)",
     "Profile optimization & marketing support from StrongBody AI team"
 ];
 
@@ -29,7 +29,7 @@ const recruitmentProcess = [
     "Submit Expression of Interest",
     "Credential & License Verification",
     "Compliance and Regulatory Review",
-    "Professional Evaluation / Interview",
+    "Professional competency review",
     "Digital Profile Structuring",
     "Formal Activation as Strategic Partner"
 ];

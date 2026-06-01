@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { generateUnifiedMetadata } from "@/utils/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
-    return generateUnifiedMetadata(undefined, { title: "For Clients | Access World-Class Health Services | StrongBody AI", description: "Find and consult verified health professionals worldwide. Book services, translate consultations in real-time, and pay securely with escrow. For patients in the US and globally." });
+    return generateUnifiedMetadata(undefined, { title: "For Clients | Access World-Class Experts | StrongBody AI", description: "Find verified wellness & health-support experts worldwide. Book wellness services, MultiMe AI voice translation, and secure platform payments." });
 }
 
 

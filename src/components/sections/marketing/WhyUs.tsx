@@ -11,8 +11,8 @@ const differentiators = [
     },
     {
         icon: <FileText size={24} />,
-        title: "Offer-Based + Escrow Commerce",
-        desc: "Unique in chat apps: seamless professional transactions combined with iron-clad escrow protection.",
+        title: "Offer-Based Commerce",
+        desc: "Unique in chat apps: seamless wellness & support transactions with clear offers and secure platform payments.",
     },
     {
         icon: <Smartphone size={24} />,
@@ -22,7 +22,7 @@ const differentiators = [
     {
         icon: <Globe2 size={24} />,
         title: "Cross-Border Power",
-        desc: "Experts in Malaysia reach premium global clients easily and effectively.",
+        desc: "Experts in Canada reach premium global clients easily and effectively.",
     },
     {
         icon: <BarChart3 size={24} />,
@@ -43,10 +43,10 @@ const WhyDifferent = () => {
                                 The Difference
                             </span>
                             <h2 className="text-3xl md:text-5xl font-extrabold text-grey-900 mb-8 leading-tight tracking-tight">
-                                Why StrongBody AI is Different
+                                Why <span className="notranslate whitespace-nowrap" translate="no">StrongBody AI</span> is Different
                             </h2>
                             <p className="text-base text-grey-500 font-medium max-w-md leading-relaxed mb-10">
-                                We are not just another healthcare directory. StrongBody AI is a complete commerce infrastructure designed for modern health services.
+                                We are not just another healthcare directory. <span className="notranslate whitespace-nowrap" translate="no">StrongBody AI</span> is a complete commerce infrastructure designed for modern health services.
                             </p>
                             <div className="w-12 h-1 bg-primary rounded-sm"></div>
                         </Reveal>

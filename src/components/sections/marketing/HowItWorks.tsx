@@ -14,7 +14,7 @@ const steps = [
     {
         num: "02",
         title: "Discover & Voice Chat",
-        desc: "Find experts in Malaysia or worldwide → voice chat with real-time translation.",
+        desc: "Find experts in Canada or worldwide → voice chat with real-time translation.",
         icon: <MessageSquare size={22} />,
     },
     {
@@ -26,7 +26,7 @@ const steps = [
     {
         num: "04",
         title: "Secure Completion",
-        desc: "Pay via Escrow → receive service → review → funds released automatically.",
+        desc: "Pay securely on the platform → receive wellness support → review → completion confirmed in-app.",
         icon: <ShieldCheck size={22} />,
     },
 ];
@@ -41,7 +41,7 @@ const HowItWorks = () => {
                     </span>
                     <h2 className="text-3xl md:text-5xl font-extrabold !text-white mb-6 tracking-tight">How It Works</h2>
                     <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed font-medium">
-                        Accessing global medical expertise is now as simple as a voice message.
+                        Accessing global expert knowledge is now as simple as a voice message.
                         Follow our streamlined process to begin your health journey.
                     </p>
                     <p className="text-base text-white/40 font-medium max-w-2xl mx-auto mt-4">

@@ -11,13 +11,13 @@ const AboutSection = () => {
                 {/* Section Header */}
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
                     <div className="max-w-2xl">
-                        <span className="text-primary font-black tracking-[0.2em] text-[11px] uppercase mb-5 block">MultiMe AI App</span>
+                        <span className="text-primary font-black tracking-[0.2em] text-[11px] uppercase mb-5 block notranslate" translate="no">MultiMe AI App</span>
                         <h2 className="text-3xl md:text-5xl font-extrabold text-grey-900 leading-[1.05] tracking-tight">
-                            Why Download the MultiMe AI App?
+                            Why Download the <span className="notranslate" translate="no">MultiMe AI</span> App?
                         </h2>
                     </div>
                     <p className="text-base text-grey-500 font-medium max-w-lg leading-relaxed border-l-2 border-grey-200 pl-6">
-                        The only app you need to experience StrongBody AI fully. One account – seamless access to voice translation, offers, escrow, and your Personal Care Team.
+                        The only app you need to experience <span className="notranslate">StrongBody AI</span> fully. One account – <span className="notranslate">MultiMe AI</span> voice translation, offers, secure payments, and your personal wellness team.
                     </p>
                 </div>
 
@@ -48,7 +48,7 @@ const AboutSection = () => {
                                             "Real-time AI Voice Translate: Speak in your local language – experts hear and reply in theirs instantly.",
                                             "Build your Personal Care Team personalized in minutes (doctors + pharmacists + nutritionists + trainers + aesthetic specialists…).",
                                             "Compare transparent Offers from thousands of global experts.",
-                                            "Secure Escrow payment – money released only when you are 100% satisfied.",
+                                            "Secure platform payment – pay when you accept an offer and confirm when support is completed.",
                                             "Manage full consultation history, results, and care team inside one app.",
                                             "Flexible 24/7 services at affordable prices (often 40-70% less than local options)."
                                         ].map((item, idx) => (
@@ -88,9 +88,9 @@ const AboutSection = () => {
                                             "Reach tens of millions of high-paying clients from US, UK, EU, Canada, Australia… without running ads.",
                                             "AI Voice Translate lets international clients understand you perfectly – even if you only speak your local language.",
                                             "Create professional Offers (price, package, schedule, terms) directly inside voice conversations.",
-                                            "Receive secure Escrow payments – withdraw to your bank in just 30 minutes.",
+                                            "Receive secure platform payments – fast withdrawal to your bank when available.",
                                             "Build powerful personal brand through Voice Hub – your personal 'radio station' auto-translated to 40+ languages.",
-                                            "Keep 80% of revenue (only 20% platform fee) from premium international clients.",
+                                            "Keep 100% of your revenue (you don't pay platform fees) from premium international clients.",
                                             "Proactively reach potential clients via Active Message + Voice Hub – sell services globally 24/7 from home."
                                         ].map((item, idx) => (
                                             <li key={idx} className="flex items-start gap-3 p-5 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/8 transition-colors">

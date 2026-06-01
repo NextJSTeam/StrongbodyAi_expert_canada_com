@@ -10,7 +10,7 @@ const benefits = [
     { icon: <Globe2 size={22} />, title: "Affordable Global Experts", desc: "Access high-quality services at affordable prices from global experts." },
     { icon: <Star size={22} />, title: "Native Communication", desc: "Communicate effortlessly in your native language thanks to AI Voice Translate." },
     { icon: <DollarSign size={22} />, title: "Transparent Offers", desc: "Compare transparent Offers before deciding on your care." },
-    { icon: <ShieldCheck size={22} />, title: "Secure Escrow & History", desc: "Secure Escrow – pay only when satisfied. Full history of consultations safely stored." },
+    { icon: <ShieldCheck size={22} />, title: "Secure Payments & History", desc: "Pay securely on the platform when you accept an offer. Full consultation history safely stored." },
 ];
 
 const ForClients = () => {
@@ -22,7 +22,7 @@ const ForClients = () => {
                         For Clients
                     </span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-grey-900 mb-5 tracking-tight">
-                        Why Love StrongBody AI on MultiMe
+                        Why Love <span className="notranslate whitespace-nowrap" translate="no">StrongBody AI</span> on <span className="notranslate whitespace-nowrap" translate="no">MultiMe</span>
                     </h2>
                     <p className="text-base text-grey-500 font-medium max-w-2xl mx-auto leading-relaxed">
                         You are a perfect fit if you want to experience borderless healthcare without language barriers, high costs, or compromising on quality.
@@ -67,7 +67,7 @@ const ForClients = () => {
                         href="/multime"
                         className="inline-flex items-center justify-center gap-2 bg-primary text-white px-10 py-4 rounded-2xl text-sm font-extrabold uppercase tracking-wider shadow-xl shadow-primary/25 hover:-translate-y-0.5 transition-all"
                     >
-                        Download MultiMe AI & Build Your Personal Care Team <ArrowRight size={16} />
+                        Download <span className="notranslate" translate="no">MultiMe AI</span> & Build Your Personal Care Team <ArrowRight size={16} />
                     </Link>
                 </div>
             </Container>

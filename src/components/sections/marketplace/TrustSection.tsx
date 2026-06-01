@@ -5,8 +5,8 @@ import { Reveal, FadeIn } from "@/components/animations/Reveal";
 
 const items = [
     { icon: <Server size={22} />, title: "Data Protection Compliance", desc: "Adherence to GDPR and applicable local data protection laws." },
-    { icon: <Scale size={22} />, title: "Local Regulatory Awareness", desc: "Active monitoring of evolving healthcare regulations across jurisdictions." },
-    { icon: <ShieldCheck size={22} />, title: "Secure Payment Infrastructure", desc: "Escrow payments via trusted providers with PCI DSS compliance." },
+    { icon: <Scale size={22} />, title: "Local Regulatory Awareness", desc: "Active monitoring of evolving wellness marketplace regulations across jurisdictions." },
+    { icon: <ShieldCheck size={22} />, title: "Secure Payment Infrastructure", desc: "Payments via trusted providers with PCI DSS compliance. Wellness marketplace — consultation and accompaniment on the platform only." },
 ];
 
 const TrustSection = () => {
@@ -45,7 +45,7 @@ const TrustSection = () => {
                         <div>
                             <h4 className="text-sm font-extrabold text-white mb-1.5 uppercase tracking-wider">Platform Disclaimer</h4>
                             <p className="text-sm text-white/50 font-medium leading-relaxed">
-                                Important Disclaimer: StrongBody AI & MultiMe AI are technology platforms connecting users with independent licensed professionals. We do not provide medical services ourselves. All clinical responsibility belongs to the verified Strategic Partners.
+                                Important Disclaimer: <span className="notranslate" translate="no">StrongBody AI</span> & <span className="notranslate" translate="no">MultiMe AI</span> are technology platforms connecting users with independent licensed professionals. We do not deliver sessions ourselves. All professional responsibility belongs to the verified Strategic Partners.
                             </p>
                         </div>
                     </div>

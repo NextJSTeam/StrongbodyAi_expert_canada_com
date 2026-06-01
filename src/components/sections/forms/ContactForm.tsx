@@ -24,7 +24,7 @@ const ContactForm = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     ...formData,
-                    type: "strongbody-malaysia"
+                    type: "strongbody-canada"
                 })
             });
 

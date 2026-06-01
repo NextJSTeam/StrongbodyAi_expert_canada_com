@@ -214,7 +214,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                         </div>
                                         <h3 className="text-xl font-bold text-white mb-2">Free Consultation</h3>
                                         <p className="text-grey-400 text-sm font-medium leading-relaxed mb-6">
-                                            Get personalized health advice from our professional medical network.
+                                            Get personalized wellness guidance from our verified expert network.
                                         </p>
                                         <Link
                                             href="/contact"

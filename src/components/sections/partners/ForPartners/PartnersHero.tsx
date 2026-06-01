@@ -18,7 +18,7 @@ const PartnersHero = () => {
                         </h1>
                     </Reveal>
                     <p className="text-lg text-text-m font-medium leading-relaxed mb-6">
-                        StrongBody AI is conducting a selective Partnership Recruitment program in the United States to onboard professionals and organizations that meet our standards of expertise, compliance, and ethical practice.
+                        <span className="notranslate" translate="no">StrongBody AI</span> is conducting a selective Partnership Recruitment program in the United States to onboard professionals and organizations that meet our standards of expertise, compliance, and ethical practice.
                     </p>
                     <div className="p-5 rounded-2xl bg-blue-50 border border-blue-100">
                         <p className="text-primary font-bold text-sm">

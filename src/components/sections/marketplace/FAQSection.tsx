@@ -9,12 +9,12 @@ interface FAQItem {
 const FAQSection = async () => {
     const clientFAQs: FAQItem[] = [
         {
-            q: "Is StrongBody AI a hospital?",
-            a: "No. StrongBody AI is a technology marketplace platform that connects clients with independently verified health professionals. We provide the infrastructure - not medical services."
+            q: "Does StrongBody AI deliver services directly?",
+            a: "No. StrongBody AI is a wellness marketplace that connects users with independently verified experts. We provide technology and communication tools — experts deliver their own services on the platform."
         },
         {
             q: "How do I pay for services?",
-            a: "Through our secure escrow system. Funds are held safely and only released to the professional when the service is confirmed as completed."
+            a: "Through our secure payment flow on the platform. You review transparent offers, pay when you accept, and confirm when agreed wellness or consultation support is completed."
         },
         {
             q: "Can I choose a professional from another country?",
@@ -22,7 +22,7 @@ const FAQSection = async () => {
         },
         {
             q: "What if there's a dispute?",
-            a: "Our transparent dispute resolution system supports both parties. Escrow funds are frozen until the matter is resolved fairly."
+            a: "Our transparent dispute resolution system supports both parties. Related payments may be paused until the matter is resolved fairly."
         }
     ];
 

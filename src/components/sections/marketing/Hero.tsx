@@ -25,7 +25,7 @@ const stats = [
 const partners = [
     { name: "Global Experts", icon: <CheckCircle2 size={16} className="text-primary" /> },
     { name: "AI Translation", icon: <CheckCircle2 size={16} className="text-primary" /> },
-    { name: "Secure Escrow", icon: <CheckCircle2 size={16} className="text-primary" /> },
+    { name: "Secure Payments", icon: <CheckCircle2 size={16} className="text-primary" /> },
 ];
 
 const Hero = () => {
@@ -54,7 +54,9 @@ const Hero = () => {
 
                     <Reveal>
                         <h1 className="text-6xl lg:text-8xl font-black !text-white tracking-tighter leading-[0.95] mb-8 text-balance uppercase">
-                            StrongBody <span className="text-primary">AI</span>
+                            <span className="notranslate" translate="no">
+                                StrongBody <span className="text-primary">AI</span>
+                            </span>
                         </h1>
                     </Reveal>
 
@@ -63,7 +65,7 @@ const Hero = () => {
                             The Health Service Hub for the Multi-Lingual World
                         </h2>
                         <p className="text-lg text-white/70 mb-14 leading-relaxed font-medium max-w-2xl mx-auto border-l-2 border-primary/30 pl-8">
-                            Real-time AI Voice Translation (40+ languages) • Personal Care Team • Transparent Offers • Secure Escrow • All inside one free app.
+                            Real-time <span className="notranslate">MultiMe AI</span> voice translation (40+ languages) • Personal wellness team • Transparent offers • Secure payments • All inside one free app.
                         </p>
                     </Reveal>
 
@@ -74,7 +76,7 @@ const Hero = () => {
                                 href="/multime"
                                 className="bg-primary text-white px-12 py-5 rounded-2xl text-[16px] font-extrabold transition-all shadow-2xl shadow-primary/40 hover:shadow-primary/60 hover:-translate-y-1 flex items-center justify-center gap-3 uppercase tracking-wider"
                             >
-                                Download MultiMe AI App <ArrowRight size={20} />
+                                Download <span className="notranslate" translate="no">MultiMe AI</span> App <ArrowRight size={20} />
                             </Link>
                         </div>
                     </Reveal>

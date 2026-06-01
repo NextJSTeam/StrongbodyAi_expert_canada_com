@@ -23,7 +23,7 @@ const Ecosystem = () => {
                             The Connected <span className="text-white">Ecosystem.</span>
                         </h2>
                         <p className="text-xl text-white font-medium leading-relaxed mb-12 max-w-xl">
-                            Our architecture enables organizations to function as verified nodes within a global medical network, sharing knowledge securely and instantly.
+                            Our architecture enables organizations to function as verified nodes within a global wellness network, sharing knowledge securely and instantly.
                         </p>
 
                         <div className="grid grid-cols-2 gap-8">

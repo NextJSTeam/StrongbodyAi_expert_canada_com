@@ -16,17 +16,17 @@ const sections = [
     {
         icon: <Scale size={24} />,
         title: "Local Regulatory Awareness",
-        content: "We actively monitor and adapt to evolving healthcare regulations across all jurisdictions where we operate. Our compliance team works to ensure that our marketplace infrastructure aligns with federal and state requirements, including those related to telehealth and digital health services."
+        content: "We actively monitor and adapt to evolving wellness marketplace regulations across all jurisdictions where we operate. Our compliance team works to ensure that our marketplace infrastructure aligns with federal and state requirements, including digital wellness services."
     },
     {
         icon: <ShieldCheck size={24} />,
         title: "Secure Payment Infrastructure",
-        content: "All financial transactions on StrongBody AI are processed through our secure escrow payment system. Funds are held in protected accounts and only released upon confirmed service completion. Our payment infrastructure meets PCI DSS compliance standards."
+        content: "Financial transactions on StrongBody AI use secure, PCI DSS–aligned payment infrastructure via trusted providers. We are a wellness & health-support marketplace connecting users with independent experts for consultation and accompaniment on the platform only."
     },
     {
         icon: <AlertTriangle size={24} />,
         title: "Platform Disclaimer",
-        content: "StrongBody AI is a technology marketplace platform. We do not directly provide medical services, medical advice, or clinical treatments. All health services listed on our platform are provided by independent, verified professionals who maintain their own professional liability. StrongBody AI facilitates the connection, transaction infrastructure, and communication tools — professionals are solely responsible for the medical services they deliver."
+        content: "StrongBody AI is a technology marketplace platform. We do not deliver services or professional advice ourselves. All wellness sessions listed on our platform are provided by independent, verified professionals who maintain their own professional liability. StrongBody AI facilitates the connection, transaction infrastructure, and communication tools — professionals are solely responsible for the services they deliver."
     },
 ];
 

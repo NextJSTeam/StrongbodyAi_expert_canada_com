@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import { generateUnifiedMetadata } from "@/utils/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
-    return generateUnifiedMetadata(undefined, { title: "MultiMe AI App | One App, 40+ Languages, Endless Health Care", description: "Download the MultiMe AI app to access global health experts, real-time AI voice translation, secure escrow payments, and personalized care in your language." });
+    return generateUnifiedMetadata(undefined, { title: "MultiMe AI App | One App, 40+ Languages, Endless Possibilities", description: "Download MultiMe AI to access global wellness experts, real-time MultiMe AI voice translation, secure platform payments, and personalized health support." });
 }
 const MultiMePage = () => {
     return (
@@ -18,12 +18,12 @@ const MultiMePage = () => {
                 <Container>
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <Reveal>
-                            <span className="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">MultiMe AI Super App</span>
+                            <span className="text-primary font-bold tracking-widest text-xs uppercase mb-4 block notranslate" translate="no">MultiMe AI Super App</span>
                             <h1 className="text-4xl md:text-6xl font-bold !text-grey-900 mb-6 leading-tight">
                                 One App. <span className="text-primary">40+ Languages.</span> Endless Care.
                             </h1>
                             <p className="text-lg text-grey-600 font-medium mb-10 leading-relaxed max-w-xl">
-                                Download the MultiMe AI app to unlock the full power of StrongBody AI. Chat with global experts, get real-time voice translation, and manage your health journey in your own language.
+                                Download the <span className="notranslate" translate="no">MultiMe AI</span> app to unlock the full power of <span className="notranslate" translate="no">StrongBody AI</span>. Chat with global experts, get real-time voice translation, and manage your health journey in your own language.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
@@ -70,12 +70,12 @@ const MultiMePage = () => {
                             {
                                 icon: <Globe className="text-primary" />,
                                 title: "AI Voice Translate",
-                                desc: "Speak naturally in Malaysia language. Experts hear you in theirs. Real-time, zero friction."
+                                desc: "Speak naturally in your language. Experts hear you in theirs. Real-time, zero friction."
                             },
                             {
                                 icon: <Shield className="text-primary" />,
-                                title: "Secure Escrow",
-                                desc: "Your payments are protected. Funds are only released when you're satisfied with the service."
+                                title: "Secure Payments",
+                                desc: "Pay on the platform with clear offers. Confirm when your agreed wellness or consultation support is completed."
                             },
                             {
                                 icon: <MessageSquare className="text-primary" />,
