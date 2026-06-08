@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Award, ClipboardCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, Award } from "lucide-react";
 import Container from "@/components/layout/Container";
 import { Reveal, FadeIn } from "@/components/animations/Reveal";
 
@@ -23,15 +23,6 @@ const partnerBenefits = [
     "Build personal brand via Voice Hub & blog",
     "Keep 100% of your revenue (you don't pay platform fees)",
     "Profile optimization & marketing support from StrongBody AI team"
-];
-
-const recruitmentProcess = [
-    "Submit Expression of Interest",
-    "Credential & License Verification",
-    "Compliance and Regulatory Review",
-    "Professional competency review",
-    "Digital Profile Structuring",
-    "Formal Activation as Strategic Partner"
 ];
 
 const PartnershipOverview = () => {
@@ -69,24 +60,6 @@ const PartnershipOverview = () => {
 
                             <div className="p-5 rounded-2xl bg-primary/5 border border-primary/10 text-primary text-sm font-extrabold mb-8 uppercase tracking-wide">
                                 Minimum requirement: You must hold a valid practicing license in your jurisdiction.
-                            </div>
-                        </Reveal>
-
-                        <Reveal delay={0.1}>
-                            <h3 className="text-lg font-extrabold mb-6 flex items-center gap-3 mt-14 text-grey-900 uppercase tracking-tight">
-                                <ClipboardCheck className="text-primary" size={20} /> Recruitment Process
-                            </h3>
-                            <div className="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-grey-200">
-                                {recruitmentProcess.map((step, idx) => (
-                                    <div key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                                        <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-grey-100 group-[.is-active]:bg-primary text-grey-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                                            {idx + 1}
-                                        </div>
-                                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-grey-100 bg-white shadow-sm font-bold text-sm text-text-p">
-                                            {step}
-                                        </div>
-                                    </div>
-                                ))}
                             </div>
                         </Reveal>
                     </div>
