@@ -31,8 +31,8 @@ export default function RootLayout({
     logo: "https://get-expert-canada.com/images/logo.png",
     description: "AI-Native Health Services Marketplace connecting verified professionals and clients globally.",
     sameAs: [
-      "https://apps.apple.com/us/app/multime-ai/id6748796219",
-      "https://play.google.com/store/apps/details?id=com.multime.app.prod"
+      "https://link.multime.ai/uVD7/b4zsnrc1",
+      "https://link.multime.ai/uVD7/b4zsnrc1"
     ],
     contactPoint: {
       "@type": "ContactPoint",

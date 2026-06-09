@@ -92,7 +92,7 @@ const FooterView = ({ settings, columns, clientsLinks, partnersLinks, legalLinks
 
                         <div className="flex items-center gap-3 pt-2">
                             <a
-                                href="https://apps.apple.com/us/app/multime-ai/id6748796219"
+                                href="https://link.multime.ai/uVD7/b4zsnrc1"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:scale-105 transition-transform duration-300"
@@ -104,7 +104,7 @@ const FooterView = ({ settings, columns, clientsLinks, partnersLinks, legalLinks
                                 />
                             </a>
                             <a
-                                href="https://play.google.com/store/apps/details?id=com.multime.app.prod"
+                                href="https://link.multime.ai/uVD7/b4zsnrc1"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:scale-105 transition-transform duration-300"

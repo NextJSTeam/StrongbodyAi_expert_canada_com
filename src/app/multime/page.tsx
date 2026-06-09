@@ -27,10 +27,10 @@ const MultiMePage = () => {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <a href="https://apps.apple.com/us/app/multime-ai/id6748796219" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-secondary text-white px-8 py-4 rounded-2xl font-bold hover:bg-secondary/90 transition-all shadow-xl">
+                                <a href="https://link.multime.ai/uVD7/b4zsnrc1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-secondary text-white px-8 py-4 rounded-2xl font-bold hover:bg-secondary/90 transition-all shadow-xl">
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" className="h-6" />
                                 </a>
-                                <a href="https://play.google.com/store/apps/details?id=com.multime.app.prod" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-secondary text-white px-8 py-4 rounded-2xl font-bold hover:bg-secondary/90 transition-all shadow-xl">
+                                <a href="https://link.multime.ai/uVD7/b4zsnrc1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-secondary text-white px-8 py-4 rounded-2xl font-bold hover:bg-secondary/90 transition-all shadow-xl">
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" className="h-6" />
                                 </a>
                             </div>
