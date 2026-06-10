@@ -1,6 +1,10 @@
 export const STRONGBODY_API_BASE_URL = process.env.STRONGBODY_API_BASE_URL;
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
+/** api-v2.strongbody.ai — not Catalog wk_live_* / API_KEY */
+export const STRONGBODY_API_KEY =
+    process.env.STRONGBODY_API_KEY || process.env.ADMIN_API_KEY || "your_api_key";
+
 export const API_CONFIG = {
     HEADERS: {
         "X-Site-Code": process.env.API_SITE_CODE,

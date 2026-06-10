@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { MAIL_CONFIG, STRONGBODY_API_BASE_URL } from "@/config/api";
+import { MAIL_CONFIG, STRONGBODY_API_BASE_URL, STRONGBODY_API_KEY } from "@/config/api";
 
 const getAdminEmailTemplate = (name: string, email: string, message: string, siteType: string) => {
   return `
@@ -76,46 +76,36 @@ export async function POST(req: NextRequest) {
     const language = req.headers.get('accept-language')?.split(',')[0] || 'Unknown';
     const consolidatedUserAgent = `${userAgent} | IP: ${ip} | Country: ${country} | Lang: ${language}`;
 
-    // ----------------------------------------------------------------
-    // PART A: SUBMIT DATA TO STRONGBODY API
-    // ----------------------------------------------------------------
-    const submitFormData = new FormData();
-    submitFormData.append('fullName', fullName || '');
-    submitFormData.append('email', email || '');
-    submitFormData.append('area', ''); 
-    submitFormData.append('workPreference', role || '');
-    
-    const contactRequestObj = {
+    const requestObj = {
         type: siteType,
         role: role,
         message: message,
-        userAgent: consolidatedUserAgent
+        userAgent: consolidatedUserAgent,
     };
-    submitFormData.append('contactRequest', JSON.stringify(contactRequestObj));
 
-    const apiUrl = `${STRONGBODY_API_BASE_URL}/v1/admin/ldp/applyjob`; 
+    const apiUrl = `${STRONGBODY_API_BASE_URL}/v1/public/ldp/inquiries-send-email`;
 
     const response = await fetch(apiUrl, {
         method: 'POST',
-        body: submitFormData,
         headers: {
-            'Scope': 'admin.strongbody.ai', 
+            'Content-Type': 'application/json',
+            'x-api-key': STRONGBODY_API_KEY,
         },
-        mode: 'cors',
-        credentials: 'include',
+        body: JSON.stringify({
+            fullName: fullName || '',
+            email: email || '',
+            request: JSON.stringify(requestObj),
+        }),
     });
 
-    if (!response.ok) {
-        let errorMsg = 'Failed to submit inquiry to API';
-        try {
-            const errData = await response.json();
-            errorMsg = errData.message || errData.error || errorMsg;
-        } catch(e) { /* ignore */ }
+    const responseData = await response.json().catch(() => ({}));
+
+    if (!response.ok || (responseData.code !== undefined && responseData.code !== 0)) {
+        const errorMsg = responseData.message || responseData.error || 'Failed to submit inquiry to API';
         console.error("Error communicating with API:", response.status, errorMsg);
         return NextResponse.json({ success: false, error: errorMsg }, { status: response.status });
     }
 
-    const responseData = await response.json().catch(() => ({}));
     console.log(`Data sent to API successfully for: ${email}`);
 
     // ----------------------------------------------------------------
