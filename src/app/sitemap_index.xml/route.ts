@@ -1,4 +1,4 @@
-import { fetchAllBlogPosts } from "@/app/api";
+import { fetchBlogsByCategory } from "@/app/api";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     const lastMod = new Date().toISOString();
 
     // Use efficient meta-only fetch
-    const { meta } = await fetchAllBlogPosts(1, 1, "");
+    const { meta } = await fetchBlogsByCategory(undefined, 1, 1, "");
     const totalPosts = meta?.total || meta?.total_entries || (meta?.total_pages ? meta.total_pages * 1 : 0) || 0;
     const postsPerSitemap = 10000;
 

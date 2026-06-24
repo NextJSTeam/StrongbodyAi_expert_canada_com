@@ -1,4 +1,4 @@
-import { fetchAllBlogPosts, cmsApi } from "@/app/api";
+import { fetchBlogsByCategory, cmsApi } from "@/app/api";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -100,7 +100,7 @@ export async function GET(
 
         try {
             // Get total posts using the same robust logic as the index
-            const { meta } = await fetchAllBlogPosts(1, 1, "");
+            const { meta } = await fetchBlogsByCategory(undefined, 1, 1, "");
             const totalPosts = meta?.total || meta?.total_entries || (meta?.total_pages ? meta.total_pages * 1 : 0) || 0;
             
             // Calculate how many API pages we actually need to fetch for this sitemap file
@@ -117,7 +117,7 @@ export async function GET(
                 const startPage = Math.floor(startPost / postsPerBatch) + 1;
 
                 const batchPromises = Array.from({ length: batchesNeeded }, (_, i) => 
-                    fetchAllBlogPosts(startPage + i, postsPerBatch, "")
+                    fetchBlogsByCategory(undefined, startPage + i, postsPerBatch, "")
                 );
                 
                 const results = await Promise.allSettled(batchPromises);
