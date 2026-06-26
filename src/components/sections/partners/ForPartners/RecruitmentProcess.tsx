@@ -22,11 +22,11 @@ const RecruitmentProcess = () => {
                         >
                             <div className="bg-white p-7 rounded-2xl border border-slate-100 shadow-sm relative h-full hover:shadow-md transition-shadow">
                                 <div className="text-4xl font-black text-slate-100 absolute top-5 right-5">{step.num}</div>
-                                <div className="w-11 h-11 rounded-xl bg-blue-50 text-[#1c906c] flex items-center justify-center mb-4">
+                                <div className="w-11 h-11 rounded-xl bg-primary-light text-primary flex items-center justify-center mb-4">
                                     {step.icon}
                                 </div>
                                 <h4 className="text-base font-bold text-slate-900 mb-2">{step.title}</h4>
-                                <p className="text-sm text-[#1c906c] font-medium leading-relaxed">{step.desc}</p>
+                                <p className="text-sm text-primary font-medium leading-relaxed">{step.desc}</p>
                             </div>
                         </Reveal>
                     ))}

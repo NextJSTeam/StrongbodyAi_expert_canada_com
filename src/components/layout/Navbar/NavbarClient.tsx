@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { isNavDropdownChildActive, isNavGroupActive, isNavLinkActive } from "./nav-utils";
 import Container from "@/components/layout/Container";
 import { Menu, X, ChevronDown, Shield, Globe, HelpCircle, User, Users, BookOpen, Info, LucideIcon } from "lucide-react";
 
@@ -79,10 +80,10 @@ const NavbarClient = ({ navLinks }: NavbarClientProps) => {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden xl:flex items-center space-x-1" ref={dropdownRef}>
+                    <div className="hidden lg:flex items-center space-x-1" ref={dropdownRef}>
                         {navLinks.map((link) => {
                             const hasChildren = link.children && link.children.length > 0;
-                            const isActive = pathname === link.href || (hasChildren && link.children!.some(c => pathname === c.href));
+                            const isActive = isNavGroupActive(pathname, link.href, link.children);
 
                             if (!hasChildren) {
                                 return (
@@ -110,7 +111,7 @@ const NavbarClient = ({ navLinks }: NavbarClientProps) => {
                                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-72 opacity-0 translate-y-2 invisible group-hover/nav:opacity-100 group-hover/nav:translate-y-0 group-hover/nav:visible transition-all duration-300 z-50">
                                         <div className="bg-white rounded-2xl shadow-2xl border border-grey-100 p-2 overflow-hidden">
                                             {link.children!.map((child) => {
-                                                const isChildActive = pathname === child.href;
+                                                const isChildActive = isNavDropdownChildActive(pathname, child.href);
                                                 const LinkIcon = iconMap[child.label] || Info;
 
                                                 return (
@@ -140,7 +141,7 @@ const NavbarClient = ({ navLinks }: NavbarClientProps) => {
                     <div className="flex items-center gap-2">
 
                         {/* Mobile menu button */}
-                        <div className="xl:hidden">
+                        <div className="lg:hidden">
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
                                 className="text-grey-700 p-2 bg-grey-50 rounded-xl border border-grey-100"
@@ -154,11 +155,11 @@ const NavbarClient = ({ navLinks }: NavbarClientProps) => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="xl:hidden absolute top-full left-0 w-full h-screen bg-white shadow-2xl z-[100] overflow-y-auto border-t border-grey-100 pb-20">
+                <div className="lg:hidden absolute top-full left-0 w-full h-screen bg-white shadow-2xl z-[100] overflow-y-auto border-t border-grey-100 pb-20">
                     <div className="p-6 space-y-6">
                         {navLinks.map((link) => {
                             const hasChildren = link.children && link.children.length > 0;
-                            const isActive = pathname === link.href;
+                            const isActive = isNavLinkActive(pathname, link.href);
 
                             return (
                                 <div key={link.id} className="space-y-3">
@@ -175,7 +176,7 @@ const NavbarClient = ({ navLinks }: NavbarClientProps) => {
                                             <div className="text-[11px] font-black text-grey-400 uppercase tracking-widest px-4">{link.label}</div>
                                             <div className="grid grid-cols-1 gap-2">
                                                 {link.children!.map((child) => {
-                                                    const isChildActive = pathname === child.href;
+                                                    const isChildActive = isNavDropdownChildActive(pathname, child.href);
                                                     const LinkIcon = iconMap[child.label] || Info;
                                                     return (
                                                         <Link

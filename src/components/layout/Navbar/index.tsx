@@ -1,5 +1,6 @@
 import { cmsApi } from '@/config/api'
 import NavbarClient from './NavbarClient'
+import { getHeaderNavLinks } from "@/config/header-menu";
 
 interface NavLink {
     id: string
@@ -19,7 +20,7 @@ interface CmsMenuItem {
     children?: CmsMenuItem[]
 }
 
-const FALLBACK_LINKS: NavLink[] = []
+const FALLBACK_LINKS = getHeaderNavLinks();
 
 function buildMenuTree(items: CmsMenuItem[]): NavLink[] {
     return items.map(item => {

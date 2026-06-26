@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import JobBoard from '@/components/recruitment/JobBoard';
-import { loadJobs } from '@/utils/recruitment-loader';
+import Link from "next/link";
+import Container from "@/components/layout/Container";
+import RecruitmentListClient from "@/components/recruitment/RecruitmentListClient";
+import {
+  loadJobsPaginated,
+  RECRUITMENT_JOBS_PER_PAGE,
+} from "@/utils/recruitment-loader";
 import { generateUnifiedMetadata } from '@/utils/seo';
 import { API_CONFIG } from '@/config/api';
 
@@ -12,12 +16,16 @@ export async function generateMetadata(): Promise<Metadata> {
     });
 }
 
-export default async function RecruitmentPage() {
+export default async function RecruitmentPage(props: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const searchParams = await props.searchParams;
+  const page = parseInt(searchParams.page || "1", 10);
     const locale = (API_CONFIG.HEADERS.language as string) || 'nl';
-    const jobs = await loadJobs(locale);
+    const { jobs, meta } = await loadJobsPaginated(page, RECRUITMENT_JOBS_PER_PAGE, locale);
 
     return (
-        <main className="min-h-screen bg-white font-sans">
+        <main className="bi-theme-seller min-h-screen overflow-x-clip bg-white font-sans">
             {/* Hero Section */}
             <section className="relative py-16 md:py-24 overflow-hidden bg-[#0A0F1C]">
                 {/* Background Image with Overlay */}
@@ -30,7 +38,7 @@ export default async function RecruitmentPage() {
                     <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F1C] via-[#0A0F1C]/80 to-transparent"></div>
                 </div>
 
-                <div className="container relative z-10 mx-auto px-4 max-w-6xl">
+                <Container className="relative z-10">
                     <div className="max-w-3xl text-left">
                         <div className="inline-flex items-center gap-2.5 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider text-primary mb-6">
                             <span className="relative flex h-2 w-2">
@@ -61,12 +69,12 @@ export default async function RecruitmentPage() {
                             </Link>
                         </div>
                     </div>
-                </div>
+                </Container>
             </section>
  
             {/* Why Join Us */}
             <section className="py-14 md:py-20 bg-grey-50 border-b border-grey-200">
-                <div className="container mx-auto px-4 max-w-6xl">
+                <Container>
                     <div className="text-center mb-10">
                         <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-4">Why StrongBody?</h2>
                         <p className="text-text-s max-w-2xl mx-auto text-base">
@@ -113,12 +121,12 @@ export default async function RecruitmentPage() {
                             </div>
                         ))}
                     </div>
-                </div>
+                </Container>
             </section>
 
             {/* Open Positions + CTA */}
             <section id="positions" className="py-14 md:py-20 bg-white">
-                <div className="container mx-auto px-4 max-w-6xl">
+                <Container>
                     <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
                         <div>
                             <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-2">Open positions</h2>
@@ -129,9 +137,13 @@ export default async function RecruitmentPage() {
                         </div>
                     </div>
 
-                    {jobs.length > 0 ? (
-                        <JobBoard jobs={jobs} />
-                    ) : (
+                    {jobs.length > 0 || meta.total > 0 ? (
+            <RecruitmentListClient
+              jobs={jobs}
+              currentPage={page}
+              totalPages={meta.total_pages}
+            />
+          ) : (
                         <div className="text-center py-16 bg-grey-50 rounded-3xl border border-grey-200">
                             <svg className="w-12 h-12 text-grey-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -158,7 +170,7 @@ export default async function RecruitmentPage() {
                             </Link>
                         </div>
                     </div>
-                </div>
+                </Container>
             </section>
         </main>
     );

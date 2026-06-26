@@ -1,7 +1,5 @@
 import { apiFetch } from "@/config/api";
 
-const DEFAULT_LANG = process.env.API_LANGUAGE || "en";
-
 export async function fetchCategories(parentSlug?: string) {
     const endpoint = parentSlug ? `/categories/${parentSlug}` : `/categories`;
     const res = await apiFetch(endpoint);
@@ -17,20 +15,26 @@ export async function fetchWidgetItems(code: string) {
     return data?.data || data;
 }
 
-export async function fetchPostDetail(slug: string, language: string = DEFAULT_LANG) {
-    const langParam = language ? `?language=${language}` : "";
+/** Locale comes from API_LANGUAGE header in apiFetch; pass language only to override. */
+export async function fetchPostDetail(slug: string, language?: string) {
+    const langParam = language ? `?language=${encodeURIComponent(language)}` : "";
     const res = await apiFetch(`/posts/${slug}${langParam}`);
     return res?.data || res;
 }
 
-export async function fetchPostsByCategory(category?: string, page?: number, limit?: number, language?: string, options: any = {}) {
+export async function fetchPostsByCategory(
+    category?: string,
+    page?: number,
+    limit?: number,
+    language?: string,
+    options: RequestInit = {},
+) {
     const params = new URLSearchParams();
-    if (language) params.append("language", language);
-    if (category) params.append("category", category);
-    if (page) params.append("page", page.toString());
-    if (limit) params.append("limit", limit.toString());
-    
-    const queryString = params.toString();
-    const url = `/posts${queryString ? `?${queryString}` : ""}`;
+    if (category) params.set("category", category);
+    if (language) params.set("language", language);
+    if (page) params.set("page", String(page));
+    if (limit) params.set("limit", String(limit));
+    const query = params.toString();
+    const url = query ? `/posts?${query}` : "/posts";
     return apiFetch(url, options);
 }

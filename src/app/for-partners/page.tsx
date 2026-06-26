@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function ForPartnersPage() {
     return (
-        <main className="min-h-screen">
+        <main className="bi-theme-seller min-h-screen">
             <ForPartnersContent />
         </main>
     );
