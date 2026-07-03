@@ -48,7 +48,7 @@ const Hero = () => {
                                 <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-40"></span>
                                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
                             </span>
-                            Now Live in 194 Countries
+                            <CountryIntroBadge brandClassName="text-white" />
                         </div>
                     </Reveal>
 
