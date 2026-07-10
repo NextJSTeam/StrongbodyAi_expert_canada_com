@@ -1,4 +1,5 @@
 import { fetchBlogsByCategory, cmsApi } from "@/app/api";
+import { getFixedSourceLanguagePairSlugs } from "@/lib/voice-translation-languages";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -50,6 +51,7 @@ async function getDynamicPagePaths(): Promise<string[]> {
             cmsApi.getMenu("sitemap-menu"),
         ]);
         const set = new Set<string>();
+        set.add("/voice-translation-app/");
 
         if (headerRes.status === "fulfilled") {
             const headerItems = headerRes.value?.data?.items || headerRes.value?.items || [];
@@ -88,6 +90,11 @@ export async function GET(
         const paths = await getDynamicPagePaths();
         routes = paths.map((path) => ({
             url: `${baseUrl}${path}`,
+            lastModified: lastMod,
+        }));
+    } else if (slug === "voice-translation-pairs.xml") {
+        routes = getFixedSourceLanguagePairSlugs().map((pairSlug) => ({
+            url: `${baseUrl}/voice-translation-app/${pairSlug}/`,
             lastModified: lastMod,
         }));
     } else if (slug.startsWith("post-sitemap")) {
@@ -168,4 +175,3 @@ export async function GET(
         },
     });
 }
-

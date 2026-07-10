@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Container from "@/components/layout/Container";
 import { Reveal, ScaleIn, Float, FadeIn } from "@/components/animations/Reveal";
+import { CountryIntroBadge } from "@/components/ui/CountryIntroBadge";
 
 const stats = [
     { icon: <ShieldCheck size={20} className="text-primary" />, val: "500+", label: "Professionals" },
