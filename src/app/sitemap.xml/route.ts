@@ -18,6 +18,7 @@ export async function GET(request: Request) {
 
   const sitemaps = [
     { loc: `${baseUrl}/sitemap/page-sitemap.xml`, lastmod: lastMod },
+        { loc: `${baseUrl}/sitemap/wellness-test.xml`, lastmod: lastMod },
     ...Array.from({ length: postSitemapCount }, (_, i) => ({
       loc: `${baseUrl}/sitemap/post-sitemap-${i + 1}.xml`,
       lastmod: lastMod

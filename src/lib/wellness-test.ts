@@ -37,12 +37,13 @@ export const WELLNESS_TEST_LOCALE = "en";
 const PUBLIC_BASE_PATH = "/v1/public/wellness-test";
 
 function getApiBaseUrl() {
-  return (
+  const value = (
     process.env.STRONGBODY_API_BASE_URL ||
     process.env.NEXT_PUBLIC_API_URL ||
     process.env.NEXT_PUBLIC_API_BASE_URL ||
     "https://api-v2.strongbody.ai"
   ).replace(/\/$/, "");
+  return value.replace(/\/v1\/public$/, "");
 }
 
 function getHeaders(): HeadersInit {
@@ -51,7 +52,7 @@ function getHeaders(): HeadersInit {
     "Content-Type": "application/json",
     Scope: "strongbody-ai",
     language: WELLNESS_TEST_LANGUAGE,
-    "x-api-key": process.env.STRONGBODY_API_KEY || process.env.NEXT_PUBLIC_API_KEY || "your_api_key",
+    "x-api-key": process.env.STRONGBODY_API_KEY || process.env.NEXT_PUBLIC_API_KEY || process.env.API_KEY || "your_api_key",
   };
 }
 
@@ -73,6 +74,19 @@ async function parseResponse<T>(response: Response): Promise<T | null> {
   }
   if (!response.ok) throw new Error("HTTP " + response.status);
   return json?.data ?? json;
+}
+
+async function fetchLocalWellness<T>(path: string, options: RequestInit = {}) {
+  const response = await fetch(path, {
+    ...options,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      ...(options.headers || {}),
+    },
+    cache: "no-store",
+  });
+  return parseResponse<T>(response);
 }
 
 async function fetchWellness<T>(path: string, options: RequestInit & { revalidate?: number | false } = {}) {
@@ -179,6 +193,12 @@ export async function getWellnessTopic(slug: string) {
 }
 
 export async function startWellnessTest(slug: string) {
+  if (typeof window !== "undefined") {
+    return fetchLocalWellness<{ submission_id?: number; questions?: WellnessQuestion[] }>(
+      "/api/wellness-test/" + encodeURIComponent(slug) + "/start/",
+      { method: "POST" },
+    );
+  }
   return fetchWellness<{ submission_id?: number; questions?: WellnessQuestion[] }>(
     PUBLIC_BASE_PATH + "/topic/" + encodeURIComponent(slug) + "/start",
     { method: "POST", revalidate: false },
@@ -186,6 +206,12 @@ export async function startWellnessTest(slug: string) {
 }
 
 export async function completeWellnessTest(slug: string, answers: Array<{ question_id: number; value?: number }>) {
+  if (typeof window !== "undefined") {
+    return fetchLocalWellness<WellnessCompleteResponse>(
+      "/api/wellness-test/" + encodeURIComponent(slug) + "/complete/",
+      { method: "POST", body: JSON.stringify({ answers }) },
+    );
+  }
   return fetchWellness<WellnessCompleteResponse>(
     PUBLIC_BASE_PATH + "/topic/" + encodeURIComponent(slug) + "/complete",
     { method: "POST", body: JSON.stringify({ answers }), revalidate: false },

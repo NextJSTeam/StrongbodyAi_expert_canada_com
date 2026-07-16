@@ -5,6 +5,36 @@ import { WELLNESS_TEST_COPY as copy } from "@/lib/wellness-test-copy";
 import type { WellnessCompleteResponse } from "@/lib/wellness-test";
 import { loadResult } from "../_lib/session-storage";
 
+type ResultScore = {
+  tag_name?: string;
+  atomic_factor_name?: string;
+  name?: string;
+  score?: number;
+  avg_score?: number;
+  level?: string;
+  insight?: string;
+};
+
+type WellnessResultPayload = WellnessCompleteResponse & {
+  af_scores?: ResultScore[];
+};
+
+function normalizeScores(result: WellnessResultPayload | null): ResultScore[] {
+  if (!result) return [];
+  if (Array.isArray(result.scores) && result.scores.length > 0) return result.scores;
+  if (Array.isArray(result.af_scores) && result.af_scores.length > 0) return result.af_scores;
+  return [];
+}
+
+function getRawScore(score: ResultScore) {
+  const value = Number(score.score ?? score.avg_score ?? 0);
+  return Number.isNaN(value) ? 0 : value;
+}
+
+function toTenPointScore(value: number) {
+  return value > 10 ? value / 10 : value;
+}
+
 const getLevelLabel = (score: number | null) => {
   if (score === null) return "Pending";
   if (score < 4) return "Needs Attention";
@@ -13,32 +43,31 @@ const getLevelLabel = (score: number | null) => {
 };
 
 export default function ResultPanel({ slug, submissionId }: { slug: string; submissionId?: string }) {
-  const [result, setResult] = useState<WellnessCompleteResponse | null>(null);
+  const [result, setResult] = useState<WellnessResultPayload | null>(null);
 
   useEffect(() => {
     if (!submissionId) return;
-    setResult(loadResult(slug, submissionId));
+    setResult(loadResult(slug, submissionId) as WellnessResultPayload | null);
   }, [slug, submissionId]);
 
+  const scores = useMemo(() => normalizeScores(result), [result]);
+
   const overallScore = useMemo(() => {
-    if (!result?.scores?.length) return null;
-    const values = result.scores
-      .map((score) => Number(score.score ?? 0))
-      .filter((value) => !Number.isNaN(value));
+    if (!scores.length) return null;
+    const values = scores.map((score) => toTenPointScore(getRawScore(score))).filter((value) => !Number.isNaN(value));
     if (!values.length) return null;
     const avg = values.reduce((total, value) => total + value, 0) / values.length;
     return Math.round(avg * 10) / 10;
-  }, [result]);
+  }, [scores]);
 
   const insights = useMemo(() => {
-    if (!result?.scores?.length) return [];
-    return result.scores.map((score, index) => ({
-      title: score.tag_name || score.atomic_factor_name || copy.insight + " " + (index + 1),
-      value: score.score ?? "-",
+    return scores.map((score, index) => ({
+      title: score.tag_name || score.atomic_factor_name || score.name || copy.insight + " " + (index + 1),
+      value: Math.round(toTenPointScore(getRawScore(score)) * 10) / 10,
       level: score.level || "",
       insight: score.insight || "",
     }));
-  }, [result]);
+  }, [scores]);
 
   if (!submissionId || !result) return null;
 

@@ -1,5 +1,6 @@
 import { fetchBlogsByCategory, cmsApi } from "@/app/api";
 import { getFixedSourceLanguagePairSlugs } from "@/lib/voice-translation-languages";
+import { listWellnessTopics } from "@/lib/wellness-test";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -52,6 +53,7 @@ async function getDynamicPagePaths(): Promise<string[]> {
         ]);
         const set = new Set<string>();
         set.add("/voice-translation-app/");
+        set.add("/wellness-test/");
 
         if (headerRes.status === "fulfilled") {
             const headerItems = headerRes.value?.data?.items || headerRes.value?.items || [];
@@ -92,6 +94,22 @@ export async function GET(
             url: `${baseUrl}${path}`,
             lastModified: lastMod,
         }));
+    } else if (slug === "wellness-test.xml") {
+        try {
+            const topics = await listWellnessTopics();
+            routes = [
+                { url: `${baseUrl}/wellness-test/`, lastModified: lastMod },
+                ...topics
+                    .filter((topic) => topic.slug)
+                    .map((topic) => ({
+                        url: `${baseUrl}/wellness-test/${topic.slug}/`,
+                        lastModified: lastMod,
+                    })),
+            ];
+        } catch (e) {
+            console.error("Error fetching wellness test topics for sitemap:", e);
+            routes = [{ url: `${baseUrl}/wellness-test/`, lastModified: lastMod }];
+        }
     } else if (slug === "voice-translation-pairs.xml") {
         routes = getFixedSourceLanguagePairSlugs().map((pairSlug) => ({
             url: `${baseUrl}/voice-translation-app/${pairSlug}/`,
