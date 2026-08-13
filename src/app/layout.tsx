@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import PostHogPageView from "@/components/analytics/PostHogPageView";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -64,6 +65,7 @@ export default function RootLayout({
 
       </head>
       <body className={`${jakarta.variable} font-sans antialiased text-base text-slate-900 bg-white`}>
+        <PostHogPageView />
         <Navbar />
         {children}
         <Footer />

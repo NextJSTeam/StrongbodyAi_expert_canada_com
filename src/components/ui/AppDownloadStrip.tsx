@@ -1,8 +1,11 @@
+"use client";
+
 import { ArrowRight, Smartphone } from "lucide-react";
 import Container from "@/components/layout/Container";
 import AppDownloadBadges from "@/components/ui/AppDownloadBadges";
 import { APP_DOWNLOAD_URL } from "@/config/links";
 import { SITE } from "@/config/site";
+import { capturePostHogEvent } from "@/components/analytics/PostHogPageView";
 
 const copyByLocale: Record<string, { kicker: string; title: string; desc: string; button: string }> = {
   en: { kicker: "MultiMe AI App", title: "Download the app to continue faster", desc: "Voice Hub, chat, translation, and secure service steps stay in one place.", button: "Download app" },
@@ -54,7 +57,8 @@ export default function AppDownloadStrip() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 text-sm font-bold text-white shadow-lg shadow-primary/20 transition hover:bg-primary-hover"
-            >
+            
+                                onClick={() => capturePostHogEvent("app_download_click", { source: "app_download_link", destination: APP_DOWNLOAD_URL })}>
               {copy.button}
               <ArrowRight size={16} />
             </a>

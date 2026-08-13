@@ -1,6 +1,9 @@
+"use client";
+
 import { APP_DOWNLOAD_URL } from "@/config/links";
 import { footerContent } from "@/config/footer-content";
 import { APP_STORE_BADGE_IMG, GOOGLE_PLAY_BADGE_IMG } from "@/constants/app-download";
+import { capturePostHogEvent } from "@/components/analytics/PostHogPageView";
 
 type AppDownloadBadgesProps = {
   className?: string;
@@ -32,6 +35,7 @@ export default function AppDownloadBadges({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={footerContent.appStoreAlt}
+        onClick={() => capturePostHogEvent("app_download_click", { source: "app_store_badge", destination: APP_DOWNLOAD_URL })}
         className="inline-flex shrink-0 items-center transition hover:opacity-90 hover:-translate-y-0.5 active:scale-[0.98]"
       >
         <img
@@ -47,6 +51,7 @@ export default function AppDownloadBadges({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={footerContent.playStoreAlt}
+        onClick={() => capturePostHogEvent("app_download_click", { source: "google_play_badge", destination: APP_DOWNLOAD_URL })}
         className="inline-flex shrink-0 items-center transition hover:opacity-90 hover:-translate-y-0.5 active:scale-[0.98]"
       >
         <img

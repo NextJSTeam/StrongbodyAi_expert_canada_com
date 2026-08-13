@@ -1,4 +1,4 @@
-﻿export type SampleRequest = {
+export type SampleRequest = {
   category: string;
   quote: string;
   budget: string;

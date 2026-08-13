@@ -1,4 +1,7 @@
-﻿import Link from "next/link";
+"use client";
+
+import { capturePostHogEvent } from "@/components/analytics/PostHogPageView";
+import Link from "next/link";
 import { ArrowRight, BriefcaseBusiness, Crown, Download, HeartHandshake, Moon, Plane, Sparkles, Stethoscope, TrendingUp, UsersRound } from "lucide-react";
 import { SAMPLE_REQUESTS } from "@/content/samples";
 
@@ -41,15 +44,15 @@ const RequestExamples = () => {
                 <p className="flex-grow text-xl font-black leading-snug text-grey-900">{request.quote}</p>
                 <div className="mt-6 flex flex-col gap-3 border-t border-grey-100 pt-4 sm:flex-row sm:items-center sm:justify-between">
                   <span className="text-xs font-black tracking-wider text-secondary">{request.budget}</span>
-                  <Link href={postRequestHref(request.quote)} className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline">Use template <ArrowRight size={14} /></Link>
+                  <Link href={postRequestHref(request.quote)} className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline" onClick={() => capturePostHogEvent("request_template_click", { source: "sample_requests", category: request.category, budget: request.budget })}>Use template <ArrowRight size={14} /></Link>
                 </div>
               </article>
             );
           })}
         </div>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <Link href={withSource(APP_DOWNLOAD_URL, "sample_requests_download")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:shadow-primary/30">Download app <Download size={16} /></Link>
-          <Link href={postRequestHref()} className="inline-flex items-center justify-center gap-2 rounded-xl border border-grey-300 bg-white px-7 py-4 text-sm font-bold text-grey-900 transition-all hover:border-primary/30">Create request <ArrowRight size={16} /></Link>
+          <Link href={withSource(APP_DOWNLOAD_URL, "sample_requests_download")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:shadow-primary/30" onClick={() => capturePostHogEvent("app_download_click", { source: "sample_requests_download", destination: APP_DOWNLOAD_URL })}>Download app <Download size={16} /></Link>
+          <Link href={postRequestHref()} className="inline-flex items-center justify-center gap-2 rounded-xl border border-grey-300 bg-white px-7 py-4 text-sm font-bold text-grey-900 transition-all hover:border-primary/30" onClick={() => capturePostHogEvent("request_create_click", { source: "sample_requests" })}>Create request <ArrowRight size={16} /></Link>
         </div>
       </div>
     </section>
