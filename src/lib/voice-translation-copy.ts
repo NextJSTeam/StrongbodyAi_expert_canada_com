@@ -7,7 +7,7 @@ export const VOICE_TRANSLATION_COPY = {
   baseMetadataTitle: (source: string) => `Voice Translation App from ${source} | MultiMe AI`,
   baseMetadataDescription: (source: string) =>
     `Translate voice and chat messages from ${source} into other languages with MultiMe AI. Choose a language pair and start communicating across languages.`,
-  baseHeroTitle: "MultiMeAI App - Speak & Translation Without Limits",
+  baseHeroTitle: "MultiMe AI App - Speak & Translation Without Limits",
   baseHeroDescription:
     "The next-generation Voice translation Chat App that helps you speak naturally, translate instantly, and build real connections across languages.",
   baseConfiguredDescription: (source: string) =>
@@ -54,7 +54,7 @@ export const VOICE_TRANSLATION_COPY = {
     "Global services and experts",
     "iOS and Android app",
   ],
-  howTitle: "How MultiMeAI App Works",
+  howTitle: "How MultiMe AI App Works",
   howDescription: (from: string, to: string) =>
     `Open the app, speak or send a message, and let MultiMe AI help turn your ${from} into clear ${to}.`,
   howSteps: (from: string, to: string) => [
@@ -74,7 +74,7 @@ export const VOICE_TRANSLATION_COPY = {
       body: "MultiMe AI helps translate the message so the other person can understand and reply.",
     },
   ],
-  videoTitle: "How MultiMeAI App Works",
+  videoTitle: "How MultiMe AI App Works",
   businessTitle: "Business in Chat with Voice Translation",
   businessDescription: (from: string, to: string) =>
     `Help ${from} and ${to} speakers keep meetings, negotiations, and service conversations moving.`,
