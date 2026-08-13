@@ -13,7 +13,7 @@ const AboutSection = () => {
                     <div className="max-w-2xl">
                         <span className="text-primary font-black tracking-[0.2em] text-[11px] uppercase mb-5 block notranslate" translate="no">MultiMe AI App</span>
                         <h2 className="text-3xl md:text-5xl font-extrabold text-grey-900 leading-[1.05] tracking-tight">
-                            Why Download the <span className="notranslate" translate="no">MultiMe AI</span> App?
+                            MultiMe AI app benefits
                         </h2>
                     </div>
                     <p className="text-base text-grey-500 font-medium max-w-lg leading-relaxed border-l-2 border-grey-200 pl-6">

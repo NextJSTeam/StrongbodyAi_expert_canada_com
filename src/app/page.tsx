@@ -8,9 +8,10 @@ import FinalCTA from "@/components/sections/marketing/FinalCTA";
 import TrustSection from "@/components/sections/marketplace/TrustSection";
 import FAQSection from "@/components/sections/marketplace/FAQSection";
 import PartnershipOverview from "@/components/sections/partners/PartnershipOverview";
-import BlogSection from "@/components/sections/marketing/BlogSection";
+import BlogSection from "@/components/sections/marketing/BlogSection";
 import RequestExamples from "@/components/sections/marketing/RequestExamples";
 import ServiceExamples from "@/components/sections/marketing/ServiceExamples";
+import AppDownloadStrip from "@/components/ui/AppDownloadStrip";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <WhyDifferent />
       <TrustSection />
       <FAQSection />
+      <AppDownloadStrip />
       <FinalCTA />
     </main>
   );

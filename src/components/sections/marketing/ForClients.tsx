@@ -22,7 +22,7 @@ const ForClients = () => {
                         For Clients
                     </span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-grey-900 mb-5 tracking-tight">
-                        Why Love <span className="notranslate whitespace-nowrap" translate="no">StrongBody AI</span> on <span className="notranslate whitespace-nowrap" translate="no">MultiMe</span>
+                        StrongBody AI benefits on <span className="notranslate whitespace-nowrap" translate="no">MultiMe</span>
                     </h2>
                     <p className="text-base text-grey-500 font-medium max-w-2xl mx-auto leading-relaxed">
                         You are a perfect fit if you want to experience borderless healthcare without language barriers, high costs, or compromising on quality.

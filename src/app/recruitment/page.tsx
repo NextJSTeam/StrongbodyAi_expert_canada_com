@@ -72,11 +72,11 @@ export default async function RecruitmentPage(props: {
                 </Container>
             </section>
  
-            {/* Why Join Us */}
+            {/* Partner advantages */}
             <section className="py-14 md:py-20 bg-grey-50 border-b border-grey-200">
                 <Container>
                     <div className="text-center mb-10">
-                        <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-4">Why StrongBody?</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-4">StrongBody advantages</h2>
                         <p className="text-text-s max-w-2xl mx-auto text-base">
                             We offer an inspiring workplace where innovation and impact come together. Grow your career while helping people worldwide improve their health.
                         </p>

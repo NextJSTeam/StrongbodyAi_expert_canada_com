@@ -43,7 +43,7 @@ const WhyDifferent = () => {
                                 The Difference
                             </span>
                             <h2 className="text-3xl md:text-5xl font-extrabold text-grey-900 mb-8 leading-tight tracking-tight">
-                                Why <span className="notranslate whitespace-nowrap" translate="no">StrongBody AI</span> is Different
+                                The <span className="notranslate whitespace-nowrap" translate="no">StrongBody AI</span> Difference
                             </h2>
                             <p className="text-base text-grey-500 font-medium max-w-md leading-relaxed mb-10">
                                 We are not just another healthcare directory. <span className="notranslate whitespace-nowrap" translate="no">StrongBody AI</span> is a complete commerce infrastructure designed for modern health services.

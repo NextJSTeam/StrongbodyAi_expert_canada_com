@@ -5,6 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isNavDropdownChildActive, isNavGroupActive, isNavLinkActive } from "./nav-utils";
 import Container from "@/components/layout/Container";
+import AppDownloadBadges from "@/components/ui/AppDownloadBadges";
+import { APP_DOWNLOAD_URL } from "@/config/links";
+import { SITE } from "@/config/site";
 import { Menu, X, ChevronDown, Shield, Globe, HelpCircle, User, Users, BookOpen, Info, LucideIcon } from "lucide-react";
 
 interface NavLink {
@@ -16,6 +19,32 @@ interface NavLink {
 
 interface NavbarClientProps {
     navLinks: NavLink[];
+}
+
+
+const appCtaByLocale: Record<string, string> = {
+  en: "Download app",
+  fr: "T?l?charger l'app",
+  de: "App herunterladen",
+  es: "Descargar app",
+  pt: "Baixar app",
+  ar: "????? ???????",
+  bn: "????? ???????",
+  zh: "????",
+  ja: "??????????",
+  ko: "? ????",
+  id: "Unduh aplikasi",
+  fil: "I-download ang app",
+  pl: "Pobierz aplikacj?",
+  sv: "Ladda ner appen",
+  it: "Scarica l'app",
+  hi: "?? ??????? ????",
+  ru: "??????? ??????????",
+};
+
+function getAppCtaLabel() {
+  const locale = String(SITE.locale || SITE.language || "en").toLowerCase();
+  return appCtaByLocale[locale] || appCtaByLocale[locale.split("-")[0]] || appCtaByLocale.en;
 }
 
 const iconMap: Record<string, LucideIcon> = {
@@ -139,6 +168,15 @@ const NavbarClient = ({ navLinks }: NavbarClientProps) => {
 
                     {/* Right Side: CTAs Moved to dynamic menu */}
                     <div className="flex items-center gap-2">
+                        <a
+                            href={APP_DOWNLOAD_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hidden rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-primary-hover lg:inline-flex"
+                        >
+                            {getAppCtaLabel()}
+                        </a>
+                        <AppDownloadBadges className="lg:hidden" size="sm" />
 
                         {/* Mobile menu button */}
                         <div className="lg:hidden">

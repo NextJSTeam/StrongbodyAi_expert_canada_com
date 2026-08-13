@@ -7,7 +7,7 @@ const StrategicValue = () => {
     return (
         <section className="py-20 bg-white">
             <Container>
-                <span className="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Why Partner With Us</span>
+                <span className="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Partnership value</span>
                 <h2 className="text-3xl md:text-4xl font-bold text-text-p mb-10">Strategic Value of Partnership</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {values.map((val, idx) => (
