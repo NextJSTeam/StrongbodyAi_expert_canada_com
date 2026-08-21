@@ -1,5 +1,6 @@
 import { fetchBlogsByCategory, cmsApi } from "@/app/api";
 import { getFixedSourceLanguagePairSlugs } from "@/lib/voice-translation-languages";
+import { getAllVoiceCreatorSlugs } from "@/lib/voice-creator";
 import { listWellnessTopics } from "@/lib/wellness-test";
 
 export const dynamic = 'force-dynamic';
@@ -54,6 +55,7 @@ async function getDynamicPagePaths(): Promise<string[]> {
         const set = new Set<string>();
         set.add("/voice-translation-app/");
         set.add("/wellness-test/");
+        set.add("/voice-creator/");
 
         if (headerRes.status === "fulfilled") {
             const headerItems = headerRes.value?.data?.items || headerRes.value?.items || [];
@@ -115,6 +117,14 @@ export async function GET(
             url: `${baseUrl}/voice-translation-app/${pairSlug}/`,
             lastModified: lastMod,
         }));
+    } else if (slug === "voice-creator.xml") {
+        routes = [
+            { url: `${baseUrl}/voice-creator/`, lastModified: lastMod },
+            ...getAllVoiceCreatorSlugs().map((keywordSlug) => ({
+                url: `${baseUrl}/voice-creator/${keywordSlug}/`,
+                lastModified: lastMod,
+            })),
+        ];
     } else if (slug.startsWith("post-sitemap")) {
         const match = slug.match(/post-sitemap-(\d+)\.xml/);
         const index = match ? parseInt(match[1]) : 1;

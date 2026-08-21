@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import PostHogPageView from "@/components/analytics/PostHogPageView";
 import Navbar from "@/components/layout/Navbar";
+import ChromeSlot from "@/components/layout/ChromeSlot";
 import Footer from "@/components/layout/Footer";
 import { fetchSiteSettings } from "@/app/api";
 
@@ -69,9 +70,13 @@ export default async function RootLayout({
       </head>
       <body className={`${jakarta.variable} font-sans antialiased text-base text-slate-900 bg-white`}>
         <PostHogPageView />
-        <Navbar settings={settings} />
+        <ChromeSlot>
+          <Navbar settings={settings} />
+        </ChromeSlot>
         {children}
-        <Footer settings={settings} />
+        <ChromeSlot>
+          <Footer settings={settings} />
+        </ChromeSlot>
       </body>
     </html>
   );
