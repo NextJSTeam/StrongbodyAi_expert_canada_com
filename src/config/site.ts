@@ -4,6 +4,6 @@ export const SITE = {
   locale: "en",
   siteCode: "strongbodycanada",
   language: "en",
-  brandDomain: "expert-canada.com",
+  brandDomain: "get-expert-canada.com",
   siteName: "StrongBody AI Canada",
 } as const;
