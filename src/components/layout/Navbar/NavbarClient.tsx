@@ -19,6 +19,8 @@ interface NavLink {
 
 interface NavbarClientProps {
     navLinks: NavLink[];
+    logoUrl: string;
+    siteTitle: string;
 }
 
 
@@ -57,7 +59,7 @@ const iconMap: Record<string, LucideIcon> = {
     "Legal": Shield,
 };
 
-const NavbarClient = ({ navLinks }: NavbarClientProps) => {
+const NavbarClient = ({ navLinks, logoUrl, siteTitle }: NavbarClientProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -102,8 +104,8 @@ const NavbarClient = ({ navLinks }: NavbarClientProps) => {
                     {/* Logo */}
                     <Link href="/" className="flex-shrink-0 flex items-center gap-2 group" onClick={() => setIsOpen(false)}>
                         <img
-                            src="/images/logo.png"
-                            alt="StrongBody AI Logo"
+                            src={logoUrl}
+                            alt={`${siteTitle} Logo`}
                             className="h-9 w-auto object-contain"
                         />
                     </Link>

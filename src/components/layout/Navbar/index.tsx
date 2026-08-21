@@ -2,6 +2,11 @@ import { cmsApi } from '@/config/api'
 import NavbarClient from './NavbarClient'
 import { getHeaderNavLinks } from "@/config/header-menu";
 
+type SiteSettings = {
+  site_title?: string;
+  logo_url?: string;
+};
+
 interface NavLink {
     id: string
     href: string
@@ -53,7 +58,10 @@ function buildMenuTree(items: CmsMenuItem[]): NavLink[] {
     })
 }
 
-export default async function Navbar() {
+export default async function Navbar({ settings }: { settings?: SiteSettings }) {
+  const logoUrl = settings?.logo_url || "/images/logo.png";
+  const siteTitle = settings?.site_title || "StrongBody AI";
+
     try {
         const res = await cmsApi.getMenu('header-menu')
 
@@ -67,12 +75,12 @@ export default async function Navbar() {
 
             const finalLinks = hasHome ? dynamicLinks : [{ id: 'nav-home', href: '/', label: 'Home' }, ...dynamicLinks]
             console.log('[Navbar] Loaded from CMS:', finalLinks.length, 'items')
-            return <NavbarClient navLinks={finalLinks} />
+            return <NavbarClient logoUrl={logoUrl} siteTitle={siteTitle} navLinks={finalLinks} />
         }
     } catch (err) {
         console.error('Failed to load menu from CMS:', err)
     }
 
     console.log('[Navbar] Using Fallback Menu')
-    return <NavbarClient navLinks={FALLBACK_LINKS} />
+    return <NavbarClient logoUrl={logoUrl} siteTitle={siteTitle} navLinks={FALLBACK_LINKS} />
 }

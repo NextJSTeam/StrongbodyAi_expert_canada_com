@@ -5,6 +5,7 @@ import "./globals.css";
 import PostHogPageView from "@/components/analytics/PostHogPageView";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { fetchSiteSettings } from "@/app/api";
 
 
 const jakarta = Plus_Jakarta_Sans({
@@ -20,11 +21,13 @@ export async function generateMetadata(): Promise<Metadata> {
   return generateUnifiedMetadata();
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await fetchSiteSettings();
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -66,9 +69,9 @@ export default function RootLayout({
       </head>
       <body className={`${jakarta.variable} font-sans antialiased text-base text-slate-900 bg-white`}>
         <PostHogPageView />
-        <Navbar />
+        <Navbar settings={settings} />
         {children}
-        <Footer />
+        <Footer settings={settings} />
       </body>
     </html>
   );
