@@ -82,8 +82,44 @@ export interface VoiceCreatorUi {
   nav: Record<VoiceCreatorNavKey, string>;
 }
 
+/**
+ * Advertising-compliance copy. Two things every page has to say out loud:
+ *
+ * 1. Who operates what. The ads promote MultiMe AI, the landing page sits on a
+ *    StrongBody country domain and shows the StrongBody wordmark. Left
+ *    unexplained that reads as a destination mismatch — the reason an ads
+ *    account gets suspended for misrepresentation rather than just having one
+ *    ad disapproved. `operatedBy` states the relationship in the header and
+ *    the footer, `operatorLegal` names the legal entity and a contact
+ *    address, and `links` point at this domain's own About / Contact / Legal
+ *    pages — the ported strongbody.ai footer links off-domain only, which made
+ *    the mismatch look worse.
+ * 2. That nothing here is guaranteed income. The keyword set is built on
+ *    "earn money with your voice" phrases, which reads as an income claim
+ *    unless the payout is spelled out as a revenue share that varies with
+ *    listens and downloads.
+ *
+ * `links` is per-site rather than derived: not every country domain ships all
+ * three pages, and a compliance link that 404s is worse than one left out.
+ */
+export interface VoiceCreatorCompliance {
+  /** One line, header and footer: "MultiMe AI is operated by StrongBody". */
+  operatedBy: string;
+  /** Legal entity, the domain it operates, and a contact address. */
+  operatorLegal: string;
+  /** Footer heading above the compliance block. */
+  legalTitle: string;
+  /** One clause, next to a CTA: earnings vary, nothing is guaranteed. */
+  earningsShort: string;
+  /** The full statement, under the "how you earn" section. */
+  earningsDisclaimer: string;
+  /** This domain's own About / Contact / Legal pages. Relative hrefs. */
+  links: Array<{ label: string; href: string }>;
+}
+
 export interface VoiceCreatorCopy {
   ui: VoiceCreatorUi;
+  compliance: VoiceCreatorCompliance;
   facts: Array<{ value: string; label: string }>;
   platforms: string[];
   audiences: Array<{ tag: string; title: string; text: string }>;

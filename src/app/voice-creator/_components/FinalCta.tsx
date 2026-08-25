@@ -5,7 +5,7 @@ import { Reveal, Waveform } from './motion';
 
 /** Closing conversion block — the page exists to end here. */
 export default function FinalCta({ page }: { page: VoiceCreatorPage }) {
-  const { ui } = page.copy;
+  const { ui, compliance } = page.copy;
 
   return (
     <section className="bg-white px-5 py-16 md:px-10 md:py-24">
@@ -45,6 +45,11 @@ export default function FinalCta({ page }: { page: VoiceCreatorPage }) {
               >
                 {CONTACT.email}
               </a>
+            </p>
+          </Reveal>
+          <Reveal delay={0.25}>
+            <p className="mx-auto mt-4 max-w-[620px] text-[12px] leading-[1.65] text-white/70">
+              {compliance.operatedBy} · {compliance.earningsShort}
             </p>
           </Reveal>
         </div>

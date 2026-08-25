@@ -25,7 +25,7 @@ export default function VoiceCreatorLanding({ page }: { page: VoiceCreatorPage }
         <div className="vc-progress-bar" />
       </div>
 
-      <Header ui={page.copy.ui} />
+      <Header ui={page.copy.ui} compliance={page.copy.compliance} />
 
       <main className="overflow-hidden">
         <Hero page={page} />

@@ -15,7 +15,13 @@ const NAV_KEYS = ['who', 'what', 'earn', 'start', 'faq'] as const;
  * on strongbody.ai. The language switcher the multi-locale build puts next to
  * the CTA is dropped: this site serves one language.
  */
-export default function Header({ ui }: { ui: VoiceCreatorCopy['ui'] }) {
+export default function Header({
+  ui,
+  compliance,
+}: {
+  ui: VoiceCreatorCopy['ui'];
+  compliance: VoiceCreatorCopy['compliance'];
+}) {
   const [solid, setSolid] = useState(false);
 
   useEffect(() => {
@@ -34,25 +40,35 @@ export default function Header({ ui }: { ui: VoiceCreatorCopy['ui'] }) {
       }`}
     >
       <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-3 px-5 py-3.5 md:px-10">
-        <a
-          href="#top"
-          data-scroll-to="#top"
-          aria-label="MultiMe AI by StrongBody"
-          className="flex shrink-0 items-center"
-        >
-          {/* The same vector logo the strongbody.ai landing page uses, copied
-              into this repo. Rendered with a plain <img>: the Next optimizer
-              does not process SVG, so routing it through next/image would only
-              add a request hop. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/logo.svg"
-            alt="StrongBody"
-            width={132}
-            height={35}
-            className="h-7 w-auto object-contain md:h-8"
-          />
-        </a>
+        {/* The wordmark alone says StrongBody while every ad that points here
+            says MultiMe AI. The operator line closes that gap on the first
+            screen; below `sm` there is no room for it beside the CTA, so the
+            hero carries the same sentence under its buttons. */}
+        <div className="flex min-w-0 shrink items-center gap-2.5">
+          <a
+            href="#top"
+            data-scroll-to="#top"
+            aria-label="MultiMe AI by StrongBody"
+            className="flex shrink-0 items-center"
+          >
+            {/* The same vector logo the strongbody.ai landing page uses, copied
+                into this repo. Rendered with a plain <img>: the Next optimizer
+                does not process SVG, so routing it through next/image would only
+                add a request hop. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo.svg"
+              alt="StrongBody"
+              width={132}
+              height={35}
+              className="h-7 w-auto object-contain md:h-8"
+            />
+          </a>
+
+          <span className="hidden min-w-0 border-l border-[#ded7f0] pl-2.5 text-[10px] leading-[1.3] font-semibold text-[#5b5570] sm:block md:text-[11px]">
+            {compliance.operatedBy}
+          </span>
+        </div>
 
         <nav aria-label={ui.navLabel} className="hidden items-center gap-7 lg:flex">
           {NAV_KEYS.map(key => (

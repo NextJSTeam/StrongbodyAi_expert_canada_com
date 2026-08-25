@@ -19,7 +19,7 @@ const CARD_TINTS = [
 
 /** Section 4 — how the money works. Keyword-sensitive lead, fixed mechanics. */
 export default function HowYouEarn({ page }: { page: VoiceCreatorPage }) {
-  const { ui, facts, moneyPoints } = page.copy;
+  const { ui, facts, moneyPoints, compliance } = page.copy;
 
   return (
     <section id="earn" className="scroll-mt-16 bg-white py-20 md:py-28">
@@ -78,6 +78,19 @@ export default function HowYouEarn({ page }: { page: VoiceCreatorPage }) {
             ))}
           </div>
         </div>
+
+        {/* Every keyword this page ranks for is an "earn money with your voice"
+            phrase, so the section that explains the money is the one that has to
+            state the limits of it: revenue share, usage-based, not a salary and
+            not a guaranteed amount. */}
+        <Reveal delay={0.1}>
+          <p
+            role="note"
+            className="mt-12 rounded-2xl border border-[#e8e2f5] bg-[#FAF8FF] px-5 py-4 text-[13px] leading-[1.7] text-[#5b5570] md:mt-14 md:text-[14px]"
+          >
+            {compliance.earningsDisclaimer}
+          </p>
+        </Reveal>
       </div>
     </section>
   );

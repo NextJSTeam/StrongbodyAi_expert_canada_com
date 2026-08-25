@@ -1,4 +1,5 @@
 import { voiceCreatorFooterCopy } from '@/content/voice-creator-footer';
+import ComplianceBar from './ComplianceBar';
 import FooterDesktop from './FooterDesktop';
 import FooterLogo from './FooterLogo';
 import FooterMobile from './FooterMobile';
@@ -27,6 +28,11 @@ export default function VoiceCreatorSiteFooter() {
       <div className="md:container md:mx-auto md:px-4">
         <FooterDesktop />
         <FooterMobile />
+
+        {/* Above the bottom bar on purpose: who operates this domain, and on
+            what terms creators get paid. Nothing else in this footer says
+            either, and both are what an ad review looks for. */}
+        <ComplianceBar />
 
         {/* bottom bar — desktop */}
         <div className="hidden flex-col items-center gap-4 py-[20px] md:flex md:flex-row md:items-center md:justify-between">

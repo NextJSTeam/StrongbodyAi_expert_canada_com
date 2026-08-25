@@ -7,7 +7,7 @@ import { IMAGES } from './data';
 import { Reveal, Waveform } from './motion';
 
 export default function Hero({ page }: { page: VoiceCreatorPage }) {
-  const { ui, platforms } = page.copy;
+  const { ui, platforms, compliance } = page.copy;
 
   return (
     <section id="top" className="relative overflow-hidden pt-28 pb-12 md:pt-36 md:pb-16">
@@ -79,6 +79,11 @@ export default function Hero({ page }: { page: VoiceCreatorPage }) {
                   </div>
                 </div>
                 <p className="text-[12px] text-[#8b849e]">{ui.heroNote}</p>
+                {/* Repeats what the header says, because the header hides this
+                    line on phones — and phones are where most ad clicks land. */}
+                <p className="max-w-[560px] text-[12px] leading-[1.6] text-[#8b849e]">
+                  {compliance.operatedBy} · {compliance.earningsShort}
+                </p>
               </div>
             </Reveal>
           </div>

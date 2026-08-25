@@ -45,10 +45,15 @@ export default function JsonLd({ page }: { page: VoiceCreatorPage }) {
       areaServed: SITE.countryEn,
       url,
       image: IMAGES.hero,
+      // The advertised brand and the brand on the domain differ, so the
+      // provider node states the relationship rather than leaving a crawler to
+      // infer it: StrongBody runs this domain, MultiMe AI is the product.
       provider: {
         '@type': 'Organization',
         name: 'StrongBody',
         url: VOICE_CREATOR_SITE_URL,
+        brand: { '@type': 'Brand', name: 'MultiMe AI', url: 'https://www.multime.ai' },
+        sameAs: ['https://www.strongbody.ai', 'https://www.multime.ai'],
       },
     },
   ];

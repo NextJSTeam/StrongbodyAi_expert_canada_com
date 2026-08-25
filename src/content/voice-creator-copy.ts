@@ -11,6 +11,18 @@ import type { VoiceCreatorCopy } from '@/lib/voice-creator';
 
 export const voiceCreatorCopy: VoiceCreatorCopy = {
   seoTitleSuffix: "MultiMe AI Audio Creator Partner",
+  compliance: {
+    operatedBy: "MultiMe AI is operated by StrongBody.",
+    operatorLegal: "get-expert-canada.com and the MultiMe AI Audio Creator Partner programme are both operated by StrongBody SG PTE., LTD., Singapore. MultiMe AI is StrongBody’s audio product — one account works across the MultiMe app and the StrongBody platform.",
+    legalTitle: "Operator and earnings information",
+    earningsShort: "Revenue share — earnings depend on listens and downloads. No income is guaranteed.",
+    earningsDisclaimer: "The Audio Creator Partner programme pays a share of the revenue your published audio generates. What a creator earns depends on how often their recordings are actually listened to and downloaded, and it differs from one creator to the next. This is not employment, not a fixed fee and not a guaranteed income: no specific amount is promised, and any figures shown are illustrative rather than typical results. The exact partner terms are shown when you register in the MultiMe app.",
+    links: [
+      { label: "About us", href: "/about" },
+      { label: "Contact", href: "/contact" },
+      { label: "Legal & compliance", href: "/legal" },
+    ],
+  },
   ui: {
     badge: "Audio Creator Partner · 1,000 slots open",
     getApp: "Get the app",
@@ -115,7 +127,7 @@ export const voiceCreatorCopy: VoiceCreatorCopy = {
       points: [
         "Start from work that is already finished",
         "Reach people who never watch the video version",
-        "One idea, published twice, earning twice"
+        "One idea, published twice, heard by two audiences"
       ]
     },
     {
@@ -225,7 +237,7 @@ export const voiceCreatorCopy: VoiceCreatorCopy = {
   ],
   themes: {
     earn: {
-      promise: "Your voice is already worth something. Publish it once, and it keeps working.",
+      promise: "Your voice is already worth something. Publish it once, and it stays available to listeners.",
       subheadline: "Record what you know, what you have lived, or what you love telling. MultiMe AI publishes your audio to listeners around the world and pays you a share of the revenue your content generates.",
       bullets: [
         "Revenue share based on how much your audio is actually listened to and downloaded",
@@ -255,7 +267,7 @@ export const voiceCreatorCopy: VoiceCreatorCopy = {
       subheadline: "MultiMe AI is an audio platform where your recordings stay online, reach listeners in many countries and return a share of revenue each time they are used.",
       bullets: [
         "Upload news, stories, podcasts, lessons, voice-overs, interviews — anything you can record",
-        "Your library keeps working while you sleep, in markets you have never visited",
+        "Your library stays online and reaches listeners in markets you have never visited",
         "Publish enough quality audio and you can unlock a free shop profile on our platform"
       ],
       monetizationLead: "Selling a recording once caps what it is worth. Publishing it on MultiMe AI turns it into an asset that is paid on usage, again and again.",
